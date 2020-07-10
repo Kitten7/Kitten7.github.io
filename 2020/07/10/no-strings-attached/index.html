@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>no-strings-attached | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="no-strings-attached   wp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="no-strings-attached">
+<meta property="og:url" content="http://yoursite.com/2020/07/10/no-strings-attached/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="no-strings-attached   wp">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/07/10/no-strings-attached/exe.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/10/no-strings-attached/r.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/10/no-strings-attached/fini.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/10/no-strings-attached/eax.png">
+<meta property="article:published_time" content="2020-07-10T07:53:07.000Z">
+<meta property="article:modified_time" content="2020-07-10T10:34:40.620Z">
 <meta property="article:author" content="kitten7">
+<meta property="article:tag" content="reverse">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/10/no-strings-attached/exe.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,36 +167,103 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-no-strings-attached" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/10/no-strings-attached/" class="archive-article-date">
-  	<time datetime="2020-07-10T07:53:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/10/no-strings-attached/">no-strings-attached</a>
+    <h1 class="article-title" itemprop="name">
+      no-strings-attached
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+		<!--显示阅读次数-->
+		
+			<br/>
+			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+			<span class="icon-sort"></span>
+			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+					阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+			</span>
+			</a>
+			
+        
+				<a href="/2020/07/10/no-strings-attached/" class="archive-article-date">
+  	<time datetime="2020-07-10T07:53:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
+</a>
+				
+			</header>
+		  
+		  <div class="article-entry" itemprop="articleBody">
+			
+				<h1 id="no-strings-attached-wp"><a href="#no-strings-attached-wp" class="headerlink" title="no-strings-attached   wp"></a>no-strings-attached   wp</h1><a id="more"></a>
+
+<h2 id="1-下载文件并查看"><a href="#1-下载文件并查看" class="headerlink" title="1. 下载文件并查看"></a>1. 下载文件并查看</h2><p>先用exeinfo查看一下是否加壳：</p>
+<p><img src="/2020/07/10/no-strings-attached/exe.png" alt="check"><br>发现是32bit文件，用ida打开，查看源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  setlocale(6, &amp;locale);</span><br><span class="line">  banner();</span><br><span class="line">  prompt_authentication();</span><br><span class="line">  authenticate();</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关键函数在于authenticate(),查看一下函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void authenticate()</span><br><span class="line">&#123;</span><br><span class="line">  int ws[8192]; &#x2F;&#x2F; [esp+1Ch] [ebp-800Ch]</span><br><span class="line">  wchar_t *s2; &#x2F;&#x2F; [esp+801Ch] [ebp-Ch]</span><br><span class="line"></span><br><span class="line">  s2 &#x3D; decrypt(&amp;s, &amp;dword_8048A90);</span><br><span class="line">  if ( fgetws(ws, 0x2000, stdin) )</span><br><span class="line">  &#123;</span><br><span class="line">    ws[wcslen(ws) - 1] &#x3D; 0;</span><br><span class="line">    if ( !wcscmp(ws, s2) )</span><br><span class="line">      wprintf(&amp;unk_8048B44);</span><br><span class="line">    else</span><br><span class="line">      wprintf(&amp;unk_8048BA4);</span><br><span class="line">  &#125;</span><br><span class="line">  free(s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看一下 unk_8048B44的内容：Sucess!Welcome back!</p>
+<p>unk_8048BA4的内容:Access denied!</p>
+<h2 id="2-分析代码"><a href="#2-分析代码" class="headerlink" title="2. 分析代码"></a>2. 分析代码</h2><p>对上面的源码分析发现，当ws==s2时，就success了，所以关键是知道s2里面的内容。</p>
+<p>s2是由加密函数decrypt()生成的，查看一下decrypt：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">wchar_t *__cdecl decrypt(wchar_t *s, wchar_t *a2)</span><br><span class="line">&#123;</span><br><span class="line">  size_t v2; &#x2F;&#x2F; eax</span><br><span class="line">  signed int v4; &#x2F;&#x2F; [esp+1Ch] [ebp-1Ch]</span><br><span class="line">  signed int i; &#x2F;&#x2F; [esp+20h] [ebp-18h]</span><br><span class="line">  signed int v6; &#x2F;&#x2F; [esp+24h] [ebp-14h]</span><br><span class="line">  signed int v7; &#x2F;&#x2F; [esp+28h] [ebp-10h]</span><br><span class="line">  wchar_t *dest; &#x2F;&#x2F; [esp+2Ch] [ebp-Ch]</span><br><span class="line"></span><br><span class="line">  v6 &#x3D; wcslen(s);</span><br><span class="line">  v7 &#x3D; wcslen(a2);</span><br><span class="line">  v2 &#x3D; wcslen(s);</span><br><span class="line">  dest &#x3D; (wchar_t *)malloc(v2 + 1);</span><br><span class="line">  wcscpy(dest, s);</span><br><span class="line">  while ( v4 &lt; v6 )</span><br><span class="line">  &#123;</span><br><span class="line">    for ( i &#x3D; 0; i &lt; v7 &amp;&amp; v4 &lt; v6; ++i )</span><br><span class="line">      dest[v4++] -&#x3D; a2[i];</span><br><span class="line">  &#125;</span><br><span class="line">  return dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再查看一下authenticate()汇编代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">8708                 push    ebp</span><br><span class="line">.text:08048709                 mov     ebp, esp</span><br><span class="line">.text:0804870B                 sub     esp, 8028h</span><br><span class="line">.text:08048711                 mov     dword ptr [esp+4], offset dword_8048A90 ; wchar_t *</span><br><span class="line">.text:08048719                 mov     dword ptr [esp], offset s ; s</span><br><span class="line">.text:08048720                 call    decrypt</span><br><span class="line">.text:08048725                 mov     [ebp+s2], eax</span><br><span class="line">.text:08048728                 mov     eax, ds:stdin@@GLIBC_2_0</span><br><span class="line">.text:0804872D                 mov     [esp+8], eax    ; stream</span><br><span class="line">.text:08048731                 mov     dword ptr [esp+4], 2000h ; n</span><br><span class="line">.text:08048739                 lea     eax, [ebp+ws]</span><br><span class="line">.text:0804873F                 mov     [esp], eax      ; ws</span><br><span class="line">.text:08048742                 call    _fgetws</span><br><span class="line">.text:08048747                 test    eax, eax</span><br><span class="line">.text:08048749                 jz      short loc_804879C</span><br><span class="line">.text:0804874B                 lea     eax, [ebp+ws]</span><br><span class="line">.text:08048751                 mov     [esp], eax      ; s</span><br><span class="line">.text:08048754                 call    _wcslen</span><br><span class="line">.text:08048759                 sub     eax, 1</span><br><span class="line">.text:0804875C                 mov     [ebp+eax*4+ws], 0</span><br><span class="line">.text:08048767                 mov     eax, [ebp+s2]</span><br><span class="line">.text:0804876A                 mov     [esp+4], eax    ; s2</span><br><span class="line">.text:0804876E                 lea     eax, [ebp+ws]</span><br><span class="line">.text:08048774                 mov     [esp], eax      ; s1</span><br><span class="line">.text:08048777                 call    _wcscmp</span><br><span class="line">.text:0804877C                 test    eax, eax</span><br><span class="line">.text:0804877E                 jnz     short loc_804878F</span><br><span class="line">.text:08048780                 mov     eax, offset unk_8048B44</span><br><span class="line">.text:08048785                 mov     [esp], eax</span><br><span class="line">.text:08048788                 call    _wprintf</span><br><span class="line">.text:0804878D                 jmp     short loc_804879C</span><br><span class="line">.text:0804878F ;</span><br></pre></td></tr></table></figure>
+<p>发现，调用decrypt函数之后，将返回值保存在了eax中，那么我们就可以利用gdb调试，下断点至decrypt之后，读取eax中的值，也就获得了s2的值，也就获得了flag。</p>
+<h2 id="3-获取flag"><a href="#3-获取flag" class="headerlink" title="3. 获取flag"></a>3. 获取flag</h2><p>用gdb调试：<br><code>gdb no-strings-attached</code></p>
+<p>下断点到decrypt：<br><code>b decrypt</code></p>
+<p>运行到断点decrypt处：<br><code>r</code></p>
+<p><img src="/2020/07/10/no-strings-attached/r.png" alt="r"></p>
+<p>发现它进入到了decrypt函数里面，但这不是我们需要的，我们希望能刚好结束decrypt函数，用以下命令退出decrypt函数：<br><code>finish</code></p>
+<p><img src="/2020/07/10/no-strings-attached/fini.png" alt="finish"></p>
+<p>查看eax的值：</p>
+<p><code>x/6sw $eax</code></p>
+<blockquote>
+<p>x:examine–&gt;检测内存地址中保存的值</p>
+</blockquote>
+<blockquote>
+<p>5:显示5行目标数据</p>
+</blockquote>
+<blockquote>
+<p>s:以字符串形式打印</p>
+</blockquote>
+<blockquote>
+<p>w:以双字打印</p>
+</blockquote>
+<p><img src="/2020/07/10/no-strings-attached/eax.png" alt="eax"></p>
+<p>flag:<br>9447{you_are_an_international_mystery}</p>
+
+			
+		  
+      <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,112 +275,161 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/07/10/no-strings-attached/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/getit/" class="archive-article-date">
-  	<time datetime="2020-07-08T15:16:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/08/getit/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">getit</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#no-strings-attached-wp"><span class="toc-number">1.</span> <span class="toc-text">no-strings-attached   wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-下载文件并查看"><span class="toc-number">1.1.</span> <span class="toc-text">1. 下载文件并查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-分析代码"><span class="toc-number">1.2.</span> <span class="toc-text">2. 分析代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-获取flag"><span class="toc-number">1.3.</span> <span class="toc-text">3. 获取flag</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/getit/">getit</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
+  
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+  
+
+  
+
+
+<!-- 《添加版权声明 -->
+   
+       <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">本文作者：</strong>
+    
+      kitten7
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-07-10
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-07-10
+    <br>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://yoursite.com/2020/07/10/no-strings-attached/" title="no-strings-attached" target="_blank">no-strings-attached</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://yoursite.com/2020/07/10/no-strings-attached/" title="no-strings-attached" target="_blank">http://yoursite.com/2020/07/10/no-strings-attached/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+    
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/python-trade/" class="archive-article-date">
-  	<time datetime="2020-07-08T07:29:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/python-trade/">Reverse python-trade</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+<!-- 添加版权声明》 -->
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-08T05:46:13.625Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+   
+<!-- 添加版权声明》 -->
 
           </div>
         </div>
@@ -330,8 +456,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
