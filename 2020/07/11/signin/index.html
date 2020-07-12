@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 随笔 | Hexo</title>
+  <title>signin | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/index.html">
+  <meta name="description" content="signin   wp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="signin">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/signin/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="signin   wp">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/07/11/signin/ida1.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/11/signin/ida2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/11/signin/archive.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/11/signin/hxdbefore.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/11/signin/hxdafter.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/11/signin/final.png">
+<meta property="article:published_time" content="2020-07-11T15:28:54.000Z">
+<meta property="article:modified_time" content="2020-07-12T11:45:04.778Z">
 <meta property="article:author" content="kitten7">
+<meta property="article:tag" content="SCTF2020">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/11/signin/ida1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,61 +169,288 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-signin" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-08T05:46:13.625Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      signin
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+		<!--显示阅读次数-->
+		
+			<br/>
+			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+			<span class="icon-sort"></span>
+			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+					阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+			</span>
+			</a>
+			
+        
+				<a href="/2020/07/11/signin/" class="archive-article-date">
+  	<time datetime="2020-07-11T15:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+				
+			</header>
+		  
+		  <div class="article-entry" itemprop="articleBody">
+			
+				<h1 id="signin-wp"><a href="#signin-wp" class="headerlink" title="signin   wp"></a>signin   wp</h1><a id="more"></a>
+<h2 id="1-查看下载"><a href="#1-查看下载" class="headerlink" title="1. 查看下载"></a>1. 查看下载</h2><p>下载好的文件，windows下打不开。。但是发现，每次点击之后，都会有一个tmp.dll文件在更新。</p>
+<p>用IDA打开看一下：<br><img src="/2020/07/11/signin/ida1.png" alt="ida"></p>
+<p>Shift+F12</p>
+<p>查看程序字符串：<br><img src="/2020/07/11/signin/ida2.png" alt="ida"></p>
+<p>发现很多Py开头的字符串，加上前面出现的tmp.dll文件，可以猜测这是Python打包的可执行文件，猜测tmp.dll是程序调用部分函数时的接口。</p>
+<h2 id="2-反编译成字节码文件-pyc"><a href="#2-反编译成字节码文件-pyc" class="headerlink" title="2. 反编译成字节码文件(.pyc)"></a>2. 反编译成字节码文件(.pyc)</h2><blockquote>
+<p>Python程序是Python(.py源代码)经过编译生成对应的字节码文件(.pyc文件)，再通过Python打包工具，转化为EXE或者ELF格式的可执行程序。</p>
+</blockquote>
+<blockquote>
+<p>常见的打包工具有py2exe和pyInstaller。</p>
+</blockquote>
+<p>Python打包可执行文件，可以查看程序的字符串里面出现很多以Py开头的字符串，没有看到有PY2EXE——VERBOSE字符串，猜测是用pyInstaller打包的。</p>
+<p>首先我们需要下载pyInstaller：<br><code>pip install pyinstaller</code></p>
+<p>然后安装archive_viewer.py：</p>
+<p><a href="https://github.com/pyinstaller/pyinstaller/blob/develop/PyInstaller/utils/cliutils/archive_viewer.py" target="_blank" rel="noopener">archive_viewer安装</a></p>
+<p>将下载下来的archive_viewer.py文件与signin.exe放于同一个文件夹内，然后执行：<br><code>python archive_viewer.py signin.exe</code></p>
+<p><img src="/2020/07/11/signin/archive.png" alt="archive"></p>
+<h2 id="3-修补字节码文件"><a href="#3-修补字节码文件" class="headerlink" title="3. 修补字节码文件"></a>3. 修补字节码文件</h2><p>用软件hxd打开main.pyc文件可以看到：<br><img src="/2020/07/11/signin/hxdbefore.png" alt="before"></p>
+<p>选择编辑-&gt;插入式粘贴：<br>从00000000开始增加如下代码：</p>
+<p><code>55 0D 0D 0A 00 00 00 00 70 79 69 30 10 01 00 00</code></p>
+<p>得到下图所示即为成功：</p>
+<p><img src="/2020/07/11/signin/hxdafter.png" alt="after"></p>
+<p>注意：修补代码是增加代码，而不是覆盖式修改。</p>
+<p>（刚开始我没注意到这个问题，就吃了这个亏，下一步怎么反编译都会报错。。。）</p>
+<h2 id="4-反编译成源文件-py"><a href="#4-反编译成源文件-py" class="headerlink" title="4. 反编译成源文件(.py)"></a>4. 反编译成源文件(.py)</h2><p>由于signin程序是在Python3.8环境下打包的，所以需要在Python3.8下反编译才可以成功。</p>
+<p>若是原来已经安装有别的版本的Python的话，直接去官网下载相对应电脑型号和系统的Python3.8就可以：</p>
+<p><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python downloads</a></p>
+<p>注意，需要确保默认的python版本式3.8的。</p>
+<p>（刚开始，我就没有意识到这一点，因为原来电脑上默认的是3.6版本的，所以不管怎么反编译都不成功，后面将python3.6的环境变量删除之后，默认就是python3.8，才可以成功。。）</p>
+<p>执行代码：<br><code>uncompyle6 main.pyc &gt; main.py</code></p>
+<p>得到py文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"># uncompyle6 version 3.7.2</span><br><span class="line"># Python bytecode 3.8 (3413)</span><br><span class="line"># Decompiled from: Python 3.8.3 (tags&#x2F;v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)]</span><br><span class="line"># Embedded file name: main.py</span><br><span class="line"># Compiled at: 1995-09-28 00:18:56</span><br><span class="line"># Size of source mod 2**32: 272 bytes</span><br><span class="line">import sys</span><br><span class="line">from PyQt5.QtCore import *</span><br><span class="line">from PyQt5.QtWidgets import *</span><br><span class="line">from signin import *</span><br><span class="line">from mydata import strBase64</span><br><span class="line">from ctypes import *</span><br><span class="line">import _ctypes</span><br><span class="line">from base64 import b64decode</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">class AccountChecker:</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.dllname &#x3D; &#39;.&#x2F;tmp.dll&#39;</span><br><span class="line">        self.dll &#x3D; self._AccountChecker__release_dll()</span><br><span class="line">        self.enc &#x3D; self.dll.enc</span><br><span class="line">        self.enc.argtypes &#x3D; (c_char_p, c_char_p, c_char_p, c_int)</span><br><span class="line">        self.enc.restype &#x3D; c_int</span><br><span class="line">        self.accounts &#x3D; &#123;b&#39;SCTFer&#39;: b64decode(b&#39;PLHCu+fujfZmMOMLGHCyWWOq5H5HDN2R5nHnlV30Q0EA&#39;)&#125;</span><br><span class="line">        self.try_times &#x3D; 0</span><br><span class="line"></span><br><span class="line">    def __release_dll(self):</span><br><span class="line">        with open(self.dllname, &#39;wb&#39;) as (f):</span><br><span class="line">            f.write(b64decode(strBase64.encode(&#39;ascii&#39;)))</span><br><span class="line">        return WinDLL(self.dllname)</span><br><span class="line"></span><br><span class="line">    def clean(self):</span><br><span class="line">        _ctypes.FreeLibrary(self.dll._handle)</span><br><span class="line">        if os.path.exists(self.dllname):</span><br><span class="line">            os.remove(self.dllname)</span><br><span class="line"></span><br><span class="line">    def _error(self, error_code):</span><br><span class="line">        errormsg &#x3D; &#123;0:&#39;Unknown Error&#39;, </span><br><span class="line">         1:&#39;Memory Error&#39;&#125;</span><br><span class="line">        QMessageBox.information(None, &#39;Error&#39;, errormsg[error_code], QMessageBox.Abort, QMessageBox.Abort)</span><br><span class="line">        sys.exit(1)</span><br><span class="line"></span><br><span class="line">    def __safe(self, username: bytes, password: bytes):</span><br><span class="line">        pwd_safe &#x3D; b&#39;\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00&#39;</span><br><span class="line">        status &#x3D; self.enc(username, password, pwd_safe, len(pwd_safe))</span><br><span class="line">        return (pwd_safe, status)</span><br><span class="line"></span><br><span class="line">    def check(self, username, password):</span><br><span class="line">        self.try_times +&#x3D; 1</span><br><span class="line">        if username not in self.accounts:</span><br><span class="line">            return False</span><br><span class="line">        encrypted_pwd, status &#x3D; self._AccountChecker__safe(username, password)</span><br><span class="line">        if status &#x3D;&#x3D; 1:</span><br><span class="line">            self._AccountChecker__error(1)</span><br><span class="line">        if encrypted_pwd !&#x3D; self.accounts[username]:</span><br><span class="line">            return False</span><br><span class="line">        self.try_times -&#x3D; 1</span><br><span class="line">        return True</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class SignInWnd(QMainWindow, Ui_QWidget):</span><br><span class="line"></span><br><span class="line">    def __init__(self, checker, parent&#x3D;None):</span><br><span class="line">        super().__init__(parent)</span><br><span class="line">        self.checker &#x3D; checker</span><br><span class="line">        self.setupUi(self)</span><br><span class="line">        self.PB_signin.clicked.connect(self.on_confirm_button_clicked)</span><br><span class="line"></span><br><span class="line">    @pyqtSlot()</span><br><span class="line">    def on_confirm_button_clicked(self):</span><br><span class="line">        username &#x3D; bytes((self.LE_usrname.text()), encoding&#x3D;&#39;ascii&#39;)</span><br><span class="line">        password &#x3D; bytes((self.LE_pwd.text()), encoding&#x3D;&#39;ascii&#39;)</span><br><span class="line">        if username &#x3D;&#x3D; b&#39;&#39; or password &#x3D;&#x3D; b&#39;&#39;:</span><br><span class="line">            self.check_input_msgbox()</span><br><span class="line">        else:</span><br><span class="line">            self.msgbox(self.checker.check(username, password))</span><br><span class="line"></span><br><span class="line">    def check_input_msgbox(self):</span><br><span class="line">        QMessageBox.information(None, &#39;Error&#39;, &#39;Check Your Input!&#39;, QMessageBox.Ok, QMessageBox.Ok)</span><br><span class="line"></span><br><span class="line">    def msgbox(self, status):</span><br><span class="line">        msg_ex &#x3D; &#123;0:&#39;&#39;, </span><br><span class="line">         1:&#39;&#39;, </span><br><span class="line">         2:&quot;It&#39;s no big deal, try again!&quot;, </span><br><span class="line">         3:&#39;Useful information is in the binary, guess what?&#39;&#125;</span><br><span class="line">        msg &#x3D; &#39;Succeeded! Flag is your password&#39; if status else &#39;Failed to sign in\n&#39; + msg_ex[(self.checker.try_times % 4)]</span><br><span class="line">        QMessageBox.information(None, &#39;SCTF2020&#39;, msg, QMessageBox.Ok, QMessageBox.Ok)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app &#x3D; QApplication(sys.argv)</span><br><span class="line">    checker &#x3D; AccountChecker()</span><br><span class="line">    sign_in_wnd &#x3D; SignInWnd(checker)</span><br><span class="line">    sign_in_wnd.show()</span><br><span class="line">    app.exec()</span><br><span class="line">    checker.clean()</span><br><span class="line">    sys.exit()</span><br><span class="line"># okay decompiling main.pyc</span><br></pre></td></tr></table></figure>
+<h2 id="5-分析代码"><a href="#5-分析代码" class="headerlink" title="5. 分析代码"></a>5. 分析代码</h2><p>1.</p>
+<p><code>self.dllname = &#39;./tmp.dll&#39;</code></p>
+<p>表示调用了tmp.dll文件作为函数接口。</p>
+<p>2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def __safe(self, username: bytes, password: bytes):</span><br><span class="line">       pwd_safe &#x3D; b&#39;\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00&#39;</span><br><span class="line">       status &#x3D; self.enc(username, password, pwd_safe, len(pwd_safe))</span><br><span class="line">       return (pwd_safe, status)</span><br><span class="line"></span><br><span class="line">   def check(self, username, password):</span><br><span class="line">       self.try_times +&#x3D; 1</span><br><span class="line">       if username not in self.accounts:</span><br><span class="line">           return False</span><br><span class="line">       encrypted_pwd, status &#x3D; self._AccountChecker__safe(username, password)</span><br><span class="line">       if status &#x3D;&#x3D; 1:</span><br><span class="line">           self._AccountChecker__error(1)</span><br><span class="line">       if encrypted_pwd !&#x3D; self.accounts[username]:</span><br><span class="line">           return False</span><br><span class="line">       self.try_times -&#x3D; 1</span><br><span class="line">       return True</span><br></pre></td></tr></table></figure>
+
+<p><code>self.accounts = {b&#39;SCTFer&#39;: b64decode(b&#39;PLHCu+fujfZmMOMLGHCyWWOq5H5HDN2R5nHnlV30Q0EA&#39;)}</code></p>
+<p>表示调用了tmp.dll文件的enc函数，查看tmp.dll的enc函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">signed __int64 __fastcall enc_0(char *a1, char *a2, __int64 a3, int a4)</span><br><span class="line">&#123;</span><br><span class="line">  char *v4; &#x2F;&#x2F; rdi</span><br><span class="line">  signed __int64 i; &#x2F;&#x2F; rcx</span><br><span class="line">  signed __int64 v6; &#x2F;&#x2F; rax</span><br><span class="line">  signed __int64 v7; &#x2F;&#x2F; rdi</span><br><span class="line">  char v9; &#x2F;&#x2F; [rsp+0h] [rbp-20h]</span><br><span class="line">  int v10; &#x2F;&#x2F; [rsp+24h] [rbp+4h]</span><br><span class="line">  int v11; &#x2F;&#x2F; [rsp+44h] [rbp+24h]</span><br><span class="line">  int v12; &#x2F;&#x2F; [rsp+64h] [rbp+44h]</span><br><span class="line">  int j; &#x2F;&#x2F; [rsp+84h] [rbp+64h]</span><br><span class="line">  __int64 Dst; &#x2F;&#x2F; [rsp+A8h] [rbp+88h]</span><br><span class="line">  int k; &#x2F;&#x2F; [rsp+C4h] [rbp+A4h]</span><br><span class="line">  __int64 v16; &#x2F;&#x2F; [rsp+198h] [rbp+178h]</span><br><span class="line">  char *v17; &#x2F;&#x2F; [rsp+1D0h] [rbp+1B0h]</span><br><span class="line">  char *Str; &#x2F;&#x2F; [rsp+1D8h] [rbp+1B8h]</span><br><span class="line">  __int64 v19; &#x2F;&#x2F; [rsp+1E0h] [rbp+1C0h]</span><br><span class="line">  int v20; &#x2F;&#x2F; [rsp+1E8h] [rbp+1C8h]</span><br><span class="line"></span><br><span class="line">  v20 &#x3D; a4;</span><br><span class="line">  v19 &#x3D; a3;</span><br><span class="line">  Str &#x3D; a2;</span><br><span class="line">  v17 &#x3D; a1;</span><br><span class="line">  v4 &#x3D; &amp;v9;</span><br><span class="line">  for ( i &#x3D; 110i64; i; --i )</span><br><span class="line">  &#123;</span><br><span class="line">    *(_DWORD *)v4 &#x3D; -858993460;</span><br><span class="line">    v4 +&#x3D; 4;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_180011078(&amp;unk_180020003);</span><br><span class="line">  v10 &#x3D; j_strlen(Str);</span><br><span class="line">  v11 &#x3D; j_strlen(v17);</span><br><span class="line">  if ( v10 &lt;&#x3D; v20 )</span><br><span class="line">  &#123;</span><br><span class="line">    while ( v10 &lt; 32 )</span><br><span class="line">      Str[v10++] &#x3D; 0;</span><br><span class="line">    v12 &#x3D; 0;</span><br><span class="line">    for ( j &#x3D; 0; j &lt; 4; ++j )</span><br><span class="line">    &#123;</span><br><span class="line">      _mm_lfence();</span><br><span class="line">      memset(&amp;Dst, 0, sizeof(Dst));</span><br><span class="line">      j_memcpy(&amp;Dst, &amp;Str[v12], 8ui64);</span><br><span class="line">      Dst &#x3D; sub_180011311(Dst);</span><br><span class="line">      j_memcpy((void *)(v12 + v19), &amp;Dst, 8ui64);</span><br><span class="line">      v12 +&#x3D; 8;</span><br><span class="line">    &#125;</span><br><span class="line">    for ( k &#x3D; 0; k &lt; 32; ++k )</span><br><span class="line">    &#123;</span><br><span class="line">      v16 &#x3D; k;</span><br><span class="line">      *(_BYTE *)(v19 + k) ^&#x3D; v17[k % v11];</span><br><span class="line">    &#125;</span><br><span class="line">    *(_BYTE *)(v19 + 32) &#x3D; 0;</span><br><span class="line">    v6 &#x3D; 0i64;</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    v6 &#x3D; 1i64;</span><br><span class="line">  &#125;</span><br><span class="line">  v7 &#x3D; v6;</span><br><span class="line">  sub_18001131B(&amp;v9, &amp;unk_18001A4A0);</span><br><span class="line">  return v7;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用了enc函数，传入username，password，pwd_safe,len(pwd_safe),实际上就是将password进行加密，然后存储到pwd_safe字节码中。最后用pwd_safe与b64decode(b’PLHCu+fujfZmMOMLGHCyWWOq5H5HDN2R5nHnlV30Q0EA’)比较，且我们可以知道username是SCTFer，而且最后返回的status一个为非1.</p>
+<h2 id="6-异或操作"><a href="#6-异或操作" class="headerlink" title="6. 异或操作"></a>6. 异或操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for ( k &#x3D; 0; k &lt; 32; ++k )</span><br><span class="line">    &#123;</span><br><span class="line">      v16 &#x3D; k;</span><br><span class="line">      *(_BYTE *)(v19 + k) ^&#x3D; v17[k % v11];</span><br><span class="line">    &#125;</span><br><span class="line">    *(_BYTE *)(v19 + 32) &#x3D; 0;</span><br><span class="line">    v6 &#x3D; 0i64;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码实际上是将Dst与用户名循环亦或，最后得到b64decode(b’PLHCu+fujfZmMOMLGHCyWWOq5H5HDN2R5nHnlV30Q0EA’)，因此我们可以写出逆向亦或的代码得到加密后的Dst：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from base64 import *</span><br><span class="line"></span><br><span class="line">username &#x3D; &quot;SCTFer&quot;</span><br><span class="line">pwd_safe &#x3D; b64decode(&#39;PLHCu+fujfZmMOMLGHCyWWOq5H5HDN2R5nHnlV30Q0EA&#39;)</span><br><span class="line"># print (len(pwd_safe))</span><br><span class="line">num &#x3D; [&quot;%02x&quot; % x for x in pwd_safe]</span><br><span class="line">hex_num &#x3D; [int(x, 16) for x in num]</span><br><span class="line"></span><br><span class="line">print(num)</span><br><span class="line"># print (len(num))</span><br><span class="line">for i in range(32):</span><br><span class="line">    hex_num[i] ^&#x3D; ord(username[i % len(username)])</span><br><span class="line"># print (hex_num)</span><br><span class="line">hex_nums &#x3D; bytes.fromhex(&#39;&#39;.join([hex(x)[2:].rjust(2, &#39;0&#39;) for x in hex_num]))</span><br><span class="line"></span><br><span class="line">print (hex_nums)</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<h2 id="7-加密操作"><a href="#7-加密操作" class="headerlink" title="7. 加密操作"></a>7. 加密操作</h2><p>每次传入了8字节数据进行加密(总共64字节)，打开sub_180011311函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall sub_180013CE0(__int64 a1)</span><br><span class="line">&#123;</span><br><span class="line">  __int64 *v1; &#x2F;&#x2F; rdi</span><br><span class="line">  signed __int64 i; &#x2F;&#x2F; rcx</span><br><span class="line">  __int64 v4; &#x2F;&#x2F; [rsp+0h] [rbp-20h]</span><br><span class="line">  int j; &#x2F;&#x2F; [rsp+24h] [rbp+4h]</span><br><span class="line">  __int64 v6; &#x2F;&#x2F; [rsp+120h] [rbp+100h]</span><br><span class="line"></span><br><span class="line">  v6 &#x3D; a1;</span><br><span class="line">  v1 &#x3D; &amp;v4;</span><br><span class="line">  for ( i &#x3D; 66i64; i; --i )</span><br><span class="line">  &#123;</span><br><span class="line">    *(_DWORD *)v1 &#x3D; -858993460;</span><br><span class="line">    v1 &#x3D; (__int64 *)((char *)v1 + 4);</span><br><span class="line">  &#125;</span><br><span class="line">  sub_180011078(&amp;unk_180020003);</span><br><span class="line">  for ( j &#x3D; 0; j &lt; 64; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    if ( v6 &gt;&#x3D; 0 )</span><br><span class="line">      v6 &#x3D; sub_18001130C(2 * v6);</span><br><span class="line">    else</span><br><span class="line">      v6 &#x3D; sub_18001130C(2 * v6 ^ 0xB0004B7679FA26B3ui64);</span><br><span class="line">  &#125;</span><br><span class="line">  return v6;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>观察代码可知，这部分代码使用的是CRC32的查表法，对数据进行加密。</p>
+<blockquote>
+<p>加密原理实际上就是CRC32算法—输入一组长度32的字符串，每8个字节分为1组，共4组。对每一组取首位，判断正负。正值，左移一位；负值，左移一位，再异或0xB0004B7679FA26B3。重复判断操作64次，得到查表法所用的表。</p>
+</blockquote>
+<p>因此，我们只需要将整个加密过程逆向操作就可以得到查表法的表，再进行CRC32计算，就可以得到输入了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">from base64 import *</span><br><span class="line"></span><br><span class="line">username &#x3D; &quot;SCTFer&quot;</span><br><span class="line">pwd_safe &#x3D; b64decode(&#39;PLHCu+fujfZmMOMLGHCyWWOq5H5HDN2R5nHnlV30Q0EA&#39;)</span><br><span class="line"></span><br><span class="line">num &#x3D; [&quot;%02x&quot; % x for x in pwd_safe]</span><br><span class="line">hex_num &#x3D; [int(x, 16) for x in num]</span><br><span class="line"></span><br><span class="line">print(num)</span><br><span class="line"></span><br><span class="line">for i in range(32):</span><br><span class="line">    hex_num[i] ^&#x3D; ord(username[i % len(username)])</span><br><span class="line"></span><br><span class="line">hex_nums &#x3D; bytes.fromhex(&#39;&#39;.join([hex(x)[2:].rjust(2, &#39;0&#39;) for x in hex_num]))</span><br><span class="line"></span><br><span class="line">print (hex_nums)</span><br><span class="line"></span><br><span class="line">secret &#x3D; []</span><br><span class="line"></span><br><span class="line">for i in range(4):</span><br><span class="line">    secret.append(int.from_bytes(hex_nums[i*8:(i + 1) * 8], byteorder&#x3D;&quot;little&quot;))</span><br><span class="line"></span><br><span class="line">print (secret)</span><br><span class="line"></span><br><span class="line">key &#x3D; 0xB0004B7679FA26B3</span><br><span class="line"></span><br><span class="line">flag &#x3D; &quot;&quot;</span><br><span class="line"></span><br><span class="line">for s in secret:</span><br><span class="line">    for i in range(64):</span><br><span class="line">        sign &#x3D; s &amp; 1</span><br><span class="line">        if sign &#x3D;&#x3D; 1:</span><br><span class="line">            s ^&#x3D; key</span><br><span class="line">        s &#x2F;&#x2F;&#x3D; 2</span><br><span class="line">        if sign &#x3D;&#x3D; 1:</span><br><span class="line">            s |&#x3D; 0x8000000000000000</span><br><span class="line">    print(hex(s))</span><br><span class="line">    j &#x3D; 0</span><br><span class="line">    while j &lt; 8:</span><br><span class="line">        flag +&#x3D; chr(s&amp;0xFF)</span><br><span class="line">        s &gt;&gt;&#x3D; 8</span><br><span class="line">        j +&#x3D; 1</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/11/signin/final.png" alt="final"></p>
+<p>flag:SCTF{We1c0m3_To_Sctf_2020_re_!!}</p>
+
+			
+		  
+      <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SCTF2020</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/07/11/signin/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/07/10/no-strings-attached/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">no-strings-attached</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#signin-wp"><span class="toc-number">1.</span> <span class="toc-text">signin   wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-查看下载"><span class="toc-number">1.1.</span> <span class="toc-text">1. 查看下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-反编译成字节码文件-pyc"><span class="toc-number">1.2.</span> <span class="toc-text">2. 反编译成字节码文件(.pyc)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-修补字节码文件"><span class="toc-number">1.3.</span> <span class="toc-text">3. 修补字节码文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-反编译成源文件-py"><span class="toc-number">1.4.</span> <span class="toc-text">4. 反编译成源文件(.py)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-分析代码"><span class="toc-number">1.5.</span> <span class="toc-text">5. 分析代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-异或操作"><span class="toc-number">1.6.</span> <span class="toc-text">6. 异或操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-加密操作"><span class="toc-number">1.7.</span> <span class="toc-text">7. 加密操作</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
+  
+
+  
+
+  
+
+
+<!-- 《添加版权声明 -->
+   
+       <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">本文作者：</strong>
     
+      kitten7
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-07-11
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-07-12
+    <br>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://yoursite.com/2020/07/11/signin/" title="signin" target="_blank">signin</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://yoursite.com/2020/07/11/signin/" title="signin" target="_blank">http://yoursite.com/2020/07/11/signin/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+    
+  </div>
 
+<!-- 添加版权声明》 -->
+
+   
+<!-- 添加版权声明》 -->
 
           </div>
         </div>
@@ -238,9 +477,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
