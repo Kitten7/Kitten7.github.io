@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/07/21/maze/maze.png">
 <meta property="article:published_time" content="2020-07-20T16:17:00.000Z">
-<meta property="article:modified_time" content="2020-07-21T00:36:52.059Z">
+<meta property="article:modified_time" content="2020-07-22T14:26:34.572Z">
 <meta property="article:author" content="kitten7">
 <meta property="article:tag" content="XCTF,Reverse">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 8
+			总文章数 9
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -196,6 +196,23 @@
 			
 				<h1 id="maze-wp"><a href="#maze-wp" class="headerlink" title="maze wp"></a>maze wp</h1><a id="more"></a>
 <h2 id="0x01-查看文件"><a href="#0x01-查看文件" class="headerlink" title="0x01 查看文件"></a>0x01 查看文件</h2><p><img src="/2020/07/21/maze/maze.png" alt></p>
+<p>ida查看源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  const char *v3; &#x2F;&#x2F; rsi</span><br><span class="line">  signed __int64 v4; &#x2F;&#x2F; rbx</span><br><span class="line">  signed int v5; &#x2F;&#x2F; eax</span><br><span class="line">  char v6; &#x2F;&#x2F; bp</span><br><span class="line">  char v7; &#x2F;&#x2F; al</span><br><span class="line">  const char *v8; &#x2F;&#x2F; rdi</span><br><span class="line">  __int64 v10; &#x2F;&#x2F; [rsp+0h] [rbp-28h]</span><br><span class="line"></span><br><span class="line">  v10 &#x3D; 0LL;</span><br><span class="line">  puts(&quot;Input flag:&quot;);</span><br><span class="line">  scanf(&quot;%s&quot;, &amp;s1, 0LL);</span><br><span class="line">  if ( strlen(&amp;s1) !&#x3D; 24 || (v3 &#x3D; &quot;nctf&#123;&quot;, strncmp(&amp;s1, &quot;nctf&#123;&quot;, 5uLL)) || *(&amp;byte_6010BF + 24) !&#x3D; 125 )</span><br><span class="line">  &#123;</span><br><span class="line">LABEL_22:</span><br><span class="line">    puts(&quot;Wrong flag!&quot;);</span><br><span class="line">    exit(-1);</span><br><span class="line">  &#125;</span><br><span class="line">  v4 &#x3D; 5LL;</span><br><span class="line">  if ( strlen(&amp;s1) - 1 &gt; 5 )</span><br><span class="line">  &#123;</span><br><span class="line">    while ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      v5 &#x3D; *(&amp;s1 + v4);</span><br><span class="line">      v6 &#x3D; 0;</span><br><span class="line">      if ( v5 &gt; 78 )</span><br><span class="line">      &#123;</span><br><span class="line">        v5 &#x3D; (unsigned __int8)v5;</span><br><span class="line">        if ( (unsigned __int8)v5 &#x3D;&#x3D; &#39;O&#39; )</span><br><span class="line">        &#123;</span><br><span class="line">          v7 &#x3D; sub_400650((char *)&amp;v10 + 4, v3);</span><br><span class="line">          goto LABEL_14;</span><br><span class="line">        &#125;</span><br><span class="line">        if ( v5 &#x3D;&#x3D; &#39;o&#39; )</span><br><span class="line">        &#123;</span><br><span class="line">          v7 &#x3D; sub_400660((char *)&amp;v10 + 4, v3);</span><br><span class="line">          goto LABEL_14;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      else</span><br><span class="line">      &#123;</span><br><span class="line">        v5 &#x3D; (unsigned __int8)v5;</span><br><span class="line">        if ( (unsigned __int8)v5 &#x3D;&#x3D; &#39;.&#39; )</span><br><span class="line">        &#123;</span><br><span class="line">          v7 &#x3D; sub_400670(&amp;v10, v3);</span><br><span class="line">          goto LABEL_14;</span><br><span class="line">        &#125;</span><br><span class="line">        if ( v5 &#x3D;&#x3D; &#39;0&#39; )</span><br><span class="line">        &#123;</span><br><span class="line">          v7 &#x3D; sub_400680(&amp;v10, v3);</span><br><span class="line">LABEL_14:</span><br><span class="line">          v6 &#x3D; v7;</span><br><span class="line">          goto LABEL_15;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">LABEL_15:</span><br><span class="line">      v3 &#x3D; (const char *)HIDWORD(v10);</span><br><span class="line">      if ( !(unsigned __int8)sub_400690(asc_601060, HIDWORD(v10), (unsigned int)v10) )</span><br><span class="line">        goto LABEL_22;</span><br><span class="line">      if ( ++v4 &gt;&#x3D; strlen(&amp;s1) - 1 )</span><br><span class="line">      &#123;</span><br><span class="line">        if ( v6 )</span><br><span class="line">          break;</span><br><span class="line">LABEL_20:</span><br><span class="line">        v8 &#x3D; &quot;Wrong flag!&quot;;</span><br><span class="line">        goto LABEL_21;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( asc_601060[8 * (signed int)v10 + SHIDWORD(v10)] !&#x3D; &#39;#&#39; )</span><br><span class="line">    goto LABEL_20;</span><br><span class="line">  v8 &#x3D; &quot;Congratulations!&quot;;</span><br><span class="line">LABEL_21:</span><br><span class="line">  puts(v8);</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-分析代码"><a href="#0x02-分析代码" class="headerlink" title="0x02 分析代码"></a>0x02 分析代码</h2><p>通过</p>
+<figure class="highlight plain"><figcaption><span>( strlen(&s1) !</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  &#123;</span><br><span class="line">LABEL_22:</span><br><span class="line">    puts(&quot;Wrong flag!&quot;);</span><br><span class="line">    exit(-1);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这一串代码，可以直到，flag长度是24，前5个字符是<code>nctf{</code>最后一个字符是’}’。</p>
+<p>中间判断的几个条件，出现了’O’,’o’,’.’,’0’这四个字符，判断可能是上下左右四个方向，迷宫是个二维数组。<br>分别查看满足条件之后的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">bool __fastcall sub_400650(_DWORD *a1)</span><br><span class="line">&#123;</span><br><span class="line">  int v1; &#x2F;&#x2F; eax</span><br><span class="line"></span><br><span class="line">  v1 &#x3D; (*a1)--;</span><br><span class="line">  return v1 &gt; 0;</span><br><span class="line">&#125;</span><br><span class="line">bool __fastcall sub_400660(int *a1)</span><br><span class="line">&#123;</span><br><span class="line">  int v1; &#x2F;&#x2F; eax</span><br><span class="line"></span><br><span class="line">  v1 &#x3D; *a1 + 1;</span><br><span class="line">  *a1 &#x3D; v1;</span><br><span class="line">  return v1 &lt; 8;</span><br><span class="line">&#125;</span><br><span class="line">bool __fastcall sub_400660(int *a1)</span><br><span class="line">&#123;</span><br><span class="line">  int v1; &#x2F;&#x2F; eax</span><br><span class="line"></span><br><span class="line">  v1 &#x3D; *a1 + 1;</span><br><span class="line">  *a1 &#x3D; v1;</span><br><span class="line">  return v1 &lt; 8;</span><br><span class="line">&#125;</span><br><span class="line">bool __fastcall sub_400660(int *a1)</span><br><span class="line">&#123;</span><br><span class="line">  int v1; &#x2F;&#x2F; eax</span><br><span class="line"></span><br><span class="line">  v1 &#x3D; *a1 + 1;</span><br><span class="line">  *a1 &#x3D; v1;</span><br><span class="line">  return v1 &lt; 8;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据二维数组，可以得出以下推论：<br>O-&gt;左<br>o-&gt;右<br>.-&gt;上<br>0-&gt;下</p>
+<p><code>!(unsigned __int8)sub_400690((__int64)asc_601060, SHIDWORD(v9), v9)</code>点进去看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall sub_400690(__int64 a1, int a2, int a3)</span><br><span class="line">&#123;</span><br><span class="line">  __int64 result; &#x2F;&#x2F; rax</span><br><span class="line"></span><br><span class="line">  result &#x3D; *(unsigned __int8 *)(a1 + a2 + 8LL * a3);</span><br><span class="line">  LOBYTE(result) &#x3D; (_DWORD)result &#x3D;&#x3D; &#39; &#39; || (_DWORD)result &#x3D;&#x3D; &#39;#&#39;;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以迷宫就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db &#39;  *******   *  **** * ****  * ***  *#  *** *** ***     *********&#39;</span><br></pre></td></tr></table></figure>
+<p>还原一下，列数是8：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  ******</span><br><span class="line">*   *  *</span><br><span class="line">*** * **</span><br><span class="line">**  * **</span><br><span class="line">*  *#  *</span><br><span class="line">** *** *</span><br><span class="line">**     *</span><br><span class="line">********</span><br></pre></td></tr></table></figure>
+
+<p>迷宫的起点是左上角顶点，终点是‘#’，所以flag：<br>nctf{o0oo00O000oooo..OO}</p>
 
 			
 		  
@@ -300,6 +317,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/07/22/cgpwn2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          cgpwn2
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/07/13/csaw2013/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">csaw2013</div>
@@ -329,7 +355,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#maze-wp"><span class="toc-number">1.</span> <span class="toc-text">maze wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-查看文件"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 查看文件</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#maze-wp"><span class="toc-number">1.</span> <span class="toc-text">maze wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-查看文件"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 查看文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-分析代码"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 分析代码</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -369,7 +395,7 @@
     2020-07-21
     <br>
     <strong class="update-time">最后更新：</strong>
-    2020-07-21
+    2020-07-22
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="http://yoursite.com/2020/07/21/maze/" title="maze" target="_blank">maze</a>
@@ -491,6 +517,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pwn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">csaw2013reversing2</a>
               </li>
              
@@ -499,11 +529,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reverse</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SCTF2020</a>
+                <a href="javascript:void(0)" class="js-tag color3">XCTF,Reverse</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,7 +537,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XCTF,Reverse</a>
+                <a href="javascript:void(0)" class="js-tag color3">reverse</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SCTF2020</a>
               </li>
             
             <div class="clearfix"></div>
