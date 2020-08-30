@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/tianchong.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/23/int-overflow/flag.png">
 <meta property="article:published_time" content="2020-07-23T15:45:01.000Z">
-<meta property="article:modified_time" content="2020-07-24T15:23:46.176Z">
+<meta property="article:modified_time" content="2020-07-25T06:21:24.721Z">
 <meta property="article:author" content="kitten7">
 <meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
@@ -73,7 +73,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 10
+			总文章数 12
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -208,7 +208,7 @@
 <p>这里需要注意一下，username和passwd都做了最大长度限制，其中passwd的长度为0x199u，特别的长，需要留意一下。</p>
 <p>check_passwd():</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">char *__cdecl check_passwd(char *s)</span><br><span class="line">&#123;</span><br><span class="line">  char *result; &#x2F;&#x2F; eax</span><br><span class="line">  char dest; &#x2F;&#x2F; [esp+4h] [ebp-14h]</span><br><span class="line">  unsigned __int8 v3; &#x2F;&#x2F; [esp+Fh] [ebp-9h]</span><br><span class="line"></span><br><span class="line">  v3 &#x3D; strlen(s);</span><br><span class="line">  if ( v3 &lt;&#x3D; 3u || v3 &gt; 8u )</span><br><span class="line">  &#123;</span><br><span class="line">    puts(&quot;Invalid Password&quot;);</span><br><span class="line">    result &#x3D; (char *)fflush(stdout);</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    puts(&quot;Success&quot;);</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    result &#x3D; strcpy(&amp;dest, s);</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>发现v3的大小为8bit(大小：0-255)，用v3来存储passwd的长度，明显是不够的，存在整数溢出漏洞。观察函数，发现当passwd的长度处于4<del>8或者是260</del>264是可以输出“success”的。下面的result是通过将字符串passwd拷贝到dest中，长度是0x14。</p>
+<p>发现v3的大小为8bit(大小：0-255)，用v3来存储passwd的长度，明显是不够的，存在整数溢出漏洞。观察函数，发现当passwd的长度处于4-8或者是260-264是可以输出“success”的。下面的result是通过将字符串passwd拷贝到dest中，长度是0x14。</p>
 <p>查看一下栈分布：<br><img src="/2020/07/23/int-overflow/stack.png" alt><br>发现，如果passwd的长度大于0x14，就会覆盖到stack中的内容。</p>
 <h2 id="0x03-编写exp"><a href="#0x03-编写exp" class="headerlink" title="0x03 编写exp"></a>0x03 编写exp</h2><p>思路大概是这样：利用整数溢出漏洞，输入大量的passwd字符造成栈溢出。大致长度处于260~264之间，我们选取261.查看一下汇编确认具体的填充数据结构：<br><img src="/2020/07/23/int-overflow/tianchong.png" alt></p>
 <p>注意到0x0804871E处，有一个leave指令(出栈操作)，需要多覆盖四个字节数据。要想覆盖到返回地址，先使用0x14个数据覆盖stack拷贝的passwd的内存区域，然后用4字节数据覆盖ebp，再用”cat flag”的地址覆盖返回地址，最后接上261剩余的数据就可以。</p>
@@ -322,6 +322,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/08/30/dmd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          dmd
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/07/22/cgpwn2/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">cgpwn2</div>
@@ -391,7 +400,7 @@
     2020-07-23
     <br>
     <strong class="update-time">最后更新：</strong>
-    2020-07-24
+    2020-07-25
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="http://yoursite.com/2020/07/23/int-overflow/" title="int_overflow" target="_blank">int_overflow</a>
@@ -521,11 +530,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">2020SCTF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +538,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XCTF,Reverse</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">2020SCTF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,6 +551,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SCTF2020</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">XCTF,Reverse</a>
               </li>
             
             <div class="clearfix"></div>

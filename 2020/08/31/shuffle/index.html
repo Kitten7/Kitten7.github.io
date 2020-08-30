@@ -6,23 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Reverse python-trade | Hexo</title>
+  <title>shuffle | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="python-trade   wp">
+  <meta name="description" content="shuffle wp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reverse python-trade">
-<meta property="og:url" content="http://yoursite.com/2020/07/08/python-trade/index.html">
+<meta property="og:title" content="shuffle">
+<meta property="og:url" content="http://yoursite.com/2020/08/31/shuffle/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="python-trade   wp">
+<meta property="og:description" content="shuffle wp">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/07/08/python-trade/a.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/08/python-trade/linux.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/08/python-trade/flag.png">
-<meta property="article:published_time" content="2020-07-08T07:29:32.000Z">
-<meta property="article:modified_time" content="2020-07-10T10:23:33.958Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/31/shuffle/exe.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/31/shuffle/question.png">
+<meta property="article:published_time" content="2020-08-30T16:05:21.000Z">
+<meta property="article:modified_time" content="2020-08-30T16:13:56.686Z">
 <meta property="article:author" content="kitten7">
+<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/08/python-trade/a.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/31/shuffle/exe.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -165,14 +165,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python-trade" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shuffle" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Reverse python-trade
+      shuffle
     </h1>
   
 
@@ -187,60 +187,23 @@
 			</a>
 			
         
-				<a href="/2020/07/08/python-trade/" class="archive-article-date">
-  	<time datetime="2020-07-08T07:29:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+				<a href="/2020/08/31/shuffle/" class="archive-article-date">
+  	<time datetime="2020-08-30T16:05:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-31</time>
 </a>
 				
 			</header>
 		  
 		  <div class="article-entry" itemprop="articleBody">
 			
-				<h1 id="python-trade-wp"><a href="#python-trade-wp" class="headerlink" title="python-trade   wp"></a>python-trade   wp</h1><a id="more"></a>
+				<h1 id="shuffle-wp"><a href="#shuffle-wp" class="headerlink" title="shuffle wp"></a>shuffle wp</h1><a id="more"></a>
 
-<h2 id="1-查看下载文件"><a href="#1-查看下载文件" class="headerlink" title="1.  查看下载文件"></a>1.  查看下载文件</h2><p><img src="/2020/07/08/python-trade/a.png" alt="初始图片"></p>
-<p>是一个prc文件？？</p>
-<blockquote>
-<p>pyc文件也就是一个二进制文件，是py文件编译之后生成的文件，是一种byte code，py文件变为pyc文件之后，速度提升了。</p>
-</blockquote>
-<p>但是pyc文件不可以直接看到源码，那这就需要pyc文件反编译的工具，不过我用的是在线转换的,在线转换工具如下：</p>
-<p><a href="https://tool.lu/pyc/" target="_blank" rel="noopener">在线工具</a></p>
-<p>如果是用命令下载的话,命令如下：</p>
-<p><code>pip install uncompyle</code></p>
-<h2 id="2-转换源码"><a href="#2-转换源码" class="headerlink" title="2. 转换源码"></a>2. 转换源码</h2><p>我使用的是在线工具进行转换的，转换之后就是下面这个样子：</p>
-<pre><code>import base64
+<h2 id="0x01-查看文件"><a href="#0x01-查看文件" class="headerlink" title="0x01 查看文件"></a>0x01 查看文件</h2><p><img src="/2020/08/31/shuffle/exe.png" alt><br>查看文件发现是32bit文件。</p>
+<h2 id="0x02-分析代码"><a href="#0x02-分析代码" class="headerlink" title="0x02 分析代码"></a>0x02 分析代码</h2><p>用ida查看一下源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  time_t v3; &#x2F;&#x2F; ebx</span><br><span class="line">  __pid_t v4; &#x2F;&#x2F; eax</span><br><span class="line">  unsigned int v5; &#x2F;&#x2F; ST18_4</span><br><span class="line">  unsigned int v6; &#x2F;&#x2F; ST1C_4</span><br><span class="line">  char v7; &#x2F;&#x2F; ST20_1</span><br><span class="line">  signed int i; &#x2F;&#x2F; [esp+14h] [ebp-44h]</span><br><span class="line">  char s; &#x2F;&#x2F; [esp+24h] [ebp-34h]</span><br><span class="line">  char v11; &#x2F;&#x2F; [esp+25h] [ebp-33h]</span><br><span class="line">  char v12; &#x2F;&#x2F; [esp+26h] [ebp-32h]</span><br><span class="line">  char v13; &#x2F;&#x2F; [esp+27h] [ebp-31h]</span><br><span class="line">  char v14; &#x2F;&#x2F; [esp+28h] [ebp-30h]</span><br><span class="line">  char v15; &#x2F;&#x2F; [esp+29h] [ebp-2Fh]</span><br><span class="line">  char v16; &#x2F;&#x2F; [esp+2Ah] [ebp-2Eh]</span><br><span class="line">  char v17; &#x2F;&#x2F; [esp+2Bh] [ebp-2Dh]</span><br><span class="line">  char v18; &#x2F;&#x2F; [esp+2Ch] [ebp-2Ch]</span><br><span class="line">  char v19; &#x2F;&#x2F; [esp+2Dh] [ebp-2Bh]</span><br><span class="line">  char v20; &#x2F;&#x2F; [esp+2Eh] [ebp-2Ah]</span><br><span class="line">  char v21; &#x2F;&#x2F; [esp+2Fh] [ebp-29h]</span><br><span class="line">  char v22; &#x2F;&#x2F; [esp+30h] [ebp-28h]</span><br><span class="line">  char v23; &#x2F;&#x2F; [esp+31h] [ebp-27h]</span><br><span class="line">  char v24; &#x2F;&#x2F; [esp+32h] [ebp-26h]</span><br><span class="line">  char v25; &#x2F;&#x2F; [esp+33h] [ebp-25h]</span><br><span class="line">  char v26; &#x2F;&#x2F; [esp+34h] [ebp-24h]</span><br><span class="line">  char v27; &#x2F;&#x2F; [esp+35h] [ebp-23h]</span><br><span class="line">  char v28; &#x2F;&#x2F; [esp+36h] [ebp-22h]</span><br><span class="line">  char v29; &#x2F;&#x2F; [esp+37h] [ebp-21h]</span><br><span class="line">  char v30; &#x2F;&#x2F; [esp+38h] [ebp-20h]</span><br><span class="line">  char v31; &#x2F;&#x2F; [esp+39h] [ebp-1Fh]</span><br><span class="line">  char v32; &#x2F;&#x2F; [esp+3Ah] [ebp-1Eh]</span><br><span class="line">  char v33; &#x2F;&#x2F; [esp+3Bh] [ebp-1Dh]</span><br><span class="line">  char v34; &#x2F;&#x2F; [esp+3Ch] [ebp-1Ch]</span><br><span class="line">  char v35; &#x2F;&#x2F; [esp+3Dh] [ebp-1Bh]</span><br><span class="line">  char v36; &#x2F;&#x2F; [esp+3Eh] [ebp-1Ah]</span><br><span class="line">  char v37; &#x2F;&#x2F; [esp+3Fh] [ebp-19h]</span><br><span class="line">  char v38; &#x2F;&#x2F; [esp+40h] [ebp-18h]</span><br><span class="line">  char v39; &#x2F;&#x2F; [esp+41h] [ebp-17h]</span><br><span class="line">  char v40; &#x2F;&#x2F; [esp+42h] [ebp-16h]</span><br><span class="line">  char v41; &#x2F;&#x2F; [esp+43h] [ebp-15h]</span><br><span class="line">  char v42; &#x2F;&#x2F; [esp+44h] [ebp-14h]</span><br><span class="line">  char v43; &#x2F;&#x2F; [esp+45h] [ebp-13h]</span><br><span class="line">  char v44; &#x2F;&#x2F; [esp+46h] [ebp-12h]</span><br><span class="line">  char v45; &#x2F;&#x2F; [esp+47h] [ebp-11h]</span><br><span class="line">  char v46; &#x2F;&#x2F; [esp+48h] [ebp-10h]</span><br><span class="line">  char v47; &#x2F;&#x2F; [esp+49h] [ebp-Fh]</span><br><span class="line">  char v48; &#x2F;&#x2F; [esp+4Ah] [ebp-Eh]</span><br><span class="line">  char v49; &#x2F;&#x2F; [esp+4Bh] [ebp-Dh]</span><br><span class="line">  unsigned int v50; &#x2F;&#x2F; [esp+4Ch] [ebp-Ch]</span><br><span class="line"></span><br><span class="line">  v50 &#x3D; __readgsdword(0x14u);</span><br><span class="line">  s &#x3D; &#39;S&#39;;</span><br><span class="line">  v11 &#x3D; &#39;E&#39;;</span><br><span class="line">  v12 &#x3D; &#39;C&#39;;</span><br><span class="line">  v13 &#x3D; &#39;C&#39;;</span><br><span class="line">  v14 &#x3D; &#39;O&#39;;</span><br><span class="line">  v15 &#x3D; &#39;N&#39;;</span><br><span class="line">  v16 &#x3D; &#39;&#123;&#39;;</span><br><span class="line">  v17 &#x3D; &#39;W&#39;;</span><br><span class="line">  v18 &#x3D; &#39;e&#39;;</span><br><span class="line">  v19 &#x3D; &#39;l&#39;;</span><br><span class="line">  v20 &#x3D; &#39;c&#39;;</span><br><span class="line">  v21 &#x3D; &#39;o&#39;;</span><br><span class="line">  v22 &#x3D; &#39;m&#39;;</span><br><span class="line">  v23 &#x3D; &#39;e&#39;;</span><br><span class="line">  v24 &#x3D; &#39; &#39;;</span><br><span class="line">  v25 &#x3D; &#39;t&#39;;</span><br><span class="line">  v26 &#x3D; &#39;o&#39;;</span><br><span class="line">  v27 &#x3D; &#39; &#39;;</span><br><span class="line">  v28 &#x3D; &#39;t&#39;;</span><br><span class="line">  v29 &#x3D; &#39;h&#39;;</span><br><span class="line">  v30 &#x3D; &#39;e&#39;;</span><br><span class="line">  v31 &#x3D; &#39; &#39;;</span><br><span class="line">  v32 &#x3D; &#39;S&#39;;</span><br><span class="line">  v33 &#x3D; &#39;E&#39;;</span><br><span class="line">  v34 &#x3D; &#39;C&#39;;</span><br><span class="line">  v35 &#x3D; &#39;C&#39;;</span><br><span class="line">  v36 &#x3D; &#39;O&#39;;</span><br><span class="line">  v37 &#x3D; &#39;N&#39;;</span><br><span class="line">  v38 &#x3D; &#39; &#39;;</span><br><span class="line">  v39 &#x3D; &#39;2&#39;;</span><br><span class="line">  v40 &#x3D; &#39;0&#39;;</span><br><span class="line">  v41 &#x3D; &#39;1&#39;;</span><br><span class="line">  v42 &#x3D; &#39;4&#39;;</span><br><span class="line">  v43 &#x3D; &#39; &#39;;</span><br><span class="line">  v44 &#x3D; &#39;C&#39;;</span><br><span class="line">  v45 &#x3D; &#39;T&#39;;</span><br><span class="line">  v46 &#x3D; &#39;F&#39;;</span><br><span class="line">  v47 &#x3D; &#39;!&#39;;</span><br><span class="line">  v48 &#x3D; &#39;&#125;&#39;;</span><br><span class="line">  v49 &#x3D; &#39;\0&#39;;</span><br><span class="line">  v3 &#x3D; time(0);</span><br><span class="line">  v4 &#x3D; getpid();</span><br><span class="line">  srand(v3 + v4);</span><br><span class="line">  for ( i &#x3D; 0; i &lt;&#x3D; 99; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 &#x3D; rand() % (unsigned int)&#39;(&#39;;</span><br><span class="line">    v6 &#x3D; rand() % (unsigned int)&#39;(&#39;;</span><br><span class="line">    v7 &#x3D; *(&amp;s + v5);</span><br><span class="line">    *(&amp;s + v5) &#x3D; *(&amp;s + v6);</span><br><span class="line">    *(&amp;s + v6) &#x3D; v7;</span><br><span class="line">  &#125;</span><br><span class="line">  puts(&amp;s);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将其中的数字转化为字符，我们可以看到代码中进行了这样一个操作，给出s[39]这个数组的初始值，然后进行rand()随机化操作。</p>
+<p>注意看题目：<br><img src="/2020/08/31/shuffle/question.png" alt></p>
+<p><code>找到字符串在随机化之前</code>，所以flag就是：<br>SECCON{welcome to the SECCON 2014 CTF!}</p>
 
-def encode(message):
-    s = &apos;&apos;
-    for i in message:
-        x = ord(i) ^ 32
-        x = x + 16
-        s += chr(x)
-
-    return base64.b64encode(s)
-
-correct = &apos;XlNkVmtUI1MgXWBZXCFeKY+AaXNt&apos;
-flag = &apos;&apos;
-print (&apos;Input flag:&apos;)
-flag = raw_input()
-if encode(flag) == correct:
-    print (&apos;correct&apos;)
-else:
-    print (&apos;wrong&apos;)</code></pre><p>linux中运行一下：</p>
-<p><img src="/2020/07/08/python-trade/linux.png" alt="linux运行"></p>
-<h2 id="3-分析得出代码"><a href="#3-分析得出代码" class="headerlink" title="3.分析得出代码"></a>3.分析得出代码</h2><p>分析上面的代码，逆过来想一下，只要输入的flag经过加密之后和’XlNkVmtUI1MgXWBZXCFeKY+AaXNt’相等，最后就输出“correct”，flag也就拿到了。</p>
-<p>相应的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def decode(message):</span><br><span class="line">    s &#x3D; &#39;&#39;</span><br><span class="line">    imessage &#x3D; base64.b64decode(message)</span><br><span class="line"></span><br><span class="line">    for i in imessage:</span><br><span class="line">        x &#x3D; ord(i) - 16</span><br><span class="line">        x &#x3D; x ^ 32</span><br><span class="line">        s +&#x3D; chr(x)</span><br><span class="line"></span><br><span class="line">    return s</span><br><span class="line"></span><br><span class="line">correct &#x3D; &#39;XlNkVmtUI1MgXWBZXCFeKY+AaXNt&#39;</span><br><span class="line"></span><br><span class="line">flag &#x3D; decode(correct)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/08/python-trade/flag.png" alt="flag"></p>
-<p>flag:</p>
-<p>nctf{d3c0mpil1n9_PyC}</p>
-<hr>
-<blockquote>
-<p>了解了一下base64.b64decode就是转换为base64编码的这种方式，需要注意的是</p>
-</blockquote>
-<blockquote>
-<p>Decode ————–解码(解的是base64加密的,可以是bytes-like object或者是ASCII string s)<br>Encode  ———-编码(用64个字符表示任意二进制数据，加密的是bytes-like object，返回的是 a bytes object)<br>两者得到的均是bytes 类型`</p>
-</blockquote>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2788529&auto=0&height=66"></iframe>
 			
 		  
       <div class="page-reward">
@@ -269,6 +232,17 @@ else:
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -319,7 +293,7 @@ else:
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/07/08/python-trade/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/08/31/shuffle/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -333,18 +307,9 @@ else:
   
 <nav id="article-nav">
   
-    <a href="/2020/07/08/getit/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          getit
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/08/30/dmd/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dmd</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -371,7 +336,7 @@ else:
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python-trade-wp"><span class="toc-number">1.</span> <span class="toc-text">python-trade   wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-查看下载文件"><span class="toc-number">1.1.</span> <span class="toc-text">1.  查看下载文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-转换源码"><span class="toc-number">1.2.</span> <span class="toc-text">2. 转换源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-分析得出代码"><span class="toc-number">1.3.</span> <span class="toc-text">3.分析得出代码</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#shuffle-wp"><span class="toc-number">1.</span> <span class="toc-text">shuffle wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-查看文件"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 查看文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-分析代码"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 分析代码</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -401,7 +366,33 @@ else:
 
 <!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
 
-  <div class="declare" hidden="hidden"></div>
+  <div class="declare">
+    <strong class="author">本文作者：</strong>
+    
+      kitten7
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-08-31
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-08-31
+    <br>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://yoursite.com/2020/08/31/shuffle/" title="shuffle" target="_blank">shuffle</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://yoursite.com/2020/08/31/shuffle/" title="shuffle" target="_blank">http://yoursite.com/2020/08/31/shuffle/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+    
+  </div>
 
 <!-- 添加版权声明》 -->
 
