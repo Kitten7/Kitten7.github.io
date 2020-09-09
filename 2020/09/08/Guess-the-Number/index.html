@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/09/08/Guess-the-Number/flag.png">
 <meta property="article:published_time" content="2020-09-08T13:23:12.000Z">
-<meta property="article:modified_time" content="2020-09-08T16:26:57.744Z">
+<meta property="article:modified_time" content="2020-09-09T08:58:24.675Z">
 <meta property="article:author" content="kitten7">
 <meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
@@ -195,7 +195,10 @@
 		  <div class="article-entry" itemprop="articleBody">
 			
 				<h1 id="Guess-the-Number"><a href="#Guess-the-Number" class="headerlink" title="Guess-the-Number"></a>Guess-the-Number</h1><a id="more"></a>
-<h2 id="0x01-查看源码"><a href="#0x01-查看源码" class="headerlink" title="0x01  查看源码"></a>0x01  查看源码</h2><p>发现是.jar文件，用jd-gui反编译看一下源码(具体的jd-gui安装方法自行查找哈~):</p>
+<h2 id="0x01-查看源码"><a href="#0x01-查看源码" class="headerlink" title="0x01  查看源码"></a>0x01  查看源码</h2><p>发现是.jar文件，用jd-gui反编译看一下源码:</p>
+<blockquote>
+<p>jd-gui安装方法：<br><a href="https://github.com/java-decompiler/jd-gui/releases" target="_blank" rel="noopener">jd-gui</a><br>下载相关文件后，解压就可以用啦~</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">import java.io.PrintStream;</span><br><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class guess</span><br><span class="line">&#123;</span><br><span class="line">  static String XOR(String _str_one, String _str_two)</span><br><span class="line">  &#123;</span><br><span class="line">    BigInteger i1 &#x3D; new BigInteger(_str_one, 16);</span><br><span class="line">    BigInteger i2 &#x3D; new BigInteger(_str_two, 16);</span><br><span class="line">    BigInteger res &#x3D; i1.xor(i2);</span><br><span class="line">    String result &#x3D; res.toString(16);</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public static void main(String[] args)</span><br><span class="line">  &#123;</span><br><span class="line">    int guess_number &#x3D; 0;</span><br><span class="line">    int my_num &#x3D; 349763335;</span><br><span class="line">    int my_number &#x3D; 1545686892;</span><br><span class="line">    int flag &#x3D; 345736730;</span><br><span class="line">    if (args.length &gt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">      try</span><br><span class="line">      &#123;</span><br><span class="line">        guess_number &#x3D; Integer.parseInt(args[0]);</span><br><span class="line">        if (my_number &#x2F; 5 &#x3D;&#x3D; guess_number)</span><br><span class="line">        &#123;</span><br><span class="line">          String str_one &#x3D; &quot;4b64ca12ace755516c178f72d05d7061&quot;;</span><br><span class="line">          String str_two &#x3D; &quot;ecd44646cfe5994ebeb35bf922e25dba&quot;;</span><br><span class="line">          my_num +&#x3D; flag;</span><br><span class="line">          String answer &#x3D; XOR(str_one, str_two);</span><br><span class="line">          </span><br><span class="line">          System.out.println(&quot;your flag is: &quot; + answer);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">          System.err.println(&quot;wrong guess!&quot;);</span><br><span class="line">          System.exit(1);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      catch (NumberFormatException e)</span><br><span class="line">      &#123;</span><br><span class="line">        System.err.println(&quot;please enter an integer \nexample: java -jar guess 12&quot;);</span><br><span class="line">        System.exit(1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">      System.err.println(&quot;wrong guess!&quot;);</span><br><span class="line">      int num &#x3D; 1000000;</span><br><span class="line">      num++;</span><br><span class="line">      System.exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>根据这个代码<code>if (my_number / 5 == guess_number)</code>可以推测出guess_number的值为<code>309137378</code>.</p>
@@ -512,11 +515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XCTF,Reverse</a>
+                <a href="javascript:void(0)" class="js-tag color4">2020SCTF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">2020SCTF</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">XCTF,Reverse</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,10 +532,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SCTF2020</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
