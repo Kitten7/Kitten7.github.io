@@ -6,24 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>srm-50 | Hexo</title>
+  <title>标签 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="srm-50 wp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="srm-50">
-<meta property="og:url" content="http://yoursite.com/2020/09/07/srm-50/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="标签">
+<meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="srm-50 wp">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/09/07/srm-50/exe.png">
-<meta property="og:image" content="http://yoursite.com/2020/09/07/srm-50/flag1.png">
-<meta property="og:image" content="http://yoursite.com/2020/09/07/srm-50/flag2.png">
-<meta property="article:published_time" content="2020-09-07T15:52:25.000Z">
-<meta property="article:modified_time" content="2020-09-08T13:15:57.506Z">
+<meta property="article:published_time" content="2020-09-18T12:19:28.000Z">
+<meta property="article:modified_time" content="2020-09-18T12:21:03.972Z">
 <meta property="article:author" content="kitten7">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/09/07/srm-50/exe.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -172,14 +165,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-srm-50" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      srm-50
+      标签
     </h1>
   
 
@@ -194,40 +187,15 @@
 			</a>
 			
         
-				<a href="/2020/09/07/srm-50/" class="archive-article-date">
-  	<time datetime="2020-09-07T15:52:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-07</time>
+				<a href="/tags/index.html" class="archive-article-date">
+  	<time datetime="2020-09-18T12:19:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
 </a>
 				
 			</header>
 		  
 		  <div class="article-entry" itemprop="articleBody">
 			
-				<h1 id="srm-50-wp"><a href="#srm-50-wp" class="headerlink" title="srm-50 wp"></a>srm-50 wp</h1><a id="more"></a>
-<h2 id="0x01查看文件"><a href="#0x01查看文件" class="headerlink" title="0x01查看文件"></a>0x01查看文件</h2><p><img src="/2020/09/07/srm-50/exe.png" alt></p>
-<h2 id="0x02分析代码"><a href="#0x02分析代码" class="headerlink" title="0x02分析代码"></a>0x02分析代码</h2><p>发现了<code>winmain</code>函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)</span><br><span class="line">&#123;</span><br><span class="line">  return DialogBoxParamW(hInstance, (LPCWSTR)0x65, 0, DialogFunc, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>看到其中有一个<code>DialogFunc</code>窗口函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">BOOL __stdcall DialogFunc(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)</span><br><span class="line">&#123;</span><br><span class="line">  HMODULE v5; &#x2F;&#x2F; eax</span><br><span class="line">  HICON v6; &#x2F;&#x2F; eax</span><br><span class="line">  HMODULE v7; &#x2F;&#x2F; eax</span><br><span class="line">  HCURSOR v8; &#x2F;&#x2F; ST20_4</span><br><span class="line">  HWND v9; &#x2F;&#x2F; eax</span><br><span class="line">  CHAR String; &#x2F;&#x2F; [esp+8h] [ebp-340h]</span><br><span class="line">  CHAR v11[4]; &#x2F;&#x2F; [esp+108h] [ebp-240h]</span><br><span class="line">  char v12; &#x2F;&#x2F; [esp+10Ch] [ebp-23Ch]</span><br><span class="line">  char v13; &#x2F;&#x2F; [esp+10Dh] [ebp-23Bh]</span><br><span class="line">  char v14; &#x2F;&#x2F; [esp+10Eh] [ebp-23Ah]</span><br><span class="line">  char v15; &#x2F;&#x2F; [esp+10Fh] [ebp-239h]</span><br><span class="line">  char v16; &#x2F;&#x2F; [esp+110h] [ebp-238h]</span><br><span class="line">  char v17; &#x2F;&#x2F; [esp+111h] [ebp-237h]</span><br><span class="line">  char v18; &#x2F;&#x2F; [esp+112h] [ebp-236h]</span><br><span class="line">  char v19; &#x2F;&#x2F; [esp+113h] [ebp-235h]</span><br><span class="line">  char v20; &#x2F;&#x2F; [esp+114h] [ebp-234h]</span><br><span class="line">  char v21; &#x2F;&#x2F; [esp+115h] [ebp-233h]</span><br><span class="line">  char v22; &#x2F;&#x2F; [esp+116h] [ebp-232h]</span><br><span class="line">  char v23; &#x2F;&#x2F; [esp+117h] [ebp-231h]</span><br><span class="line">  CHAR Text; &#x2F;&#x2F; [esp+208h] [ebp-140h]</span><br><span class="line">  char Src[16]; &#x2F;&#x2F; [esp+308h] [ebp-40h]</span><br><span class="line">  __int128 v26; &#x2F;&#x2F; [esp+318h] [ebp-30h]</span><br><span class="line">  int v27; &#x2F;&#x2F; [esp+328h] [ebp-20h]</span><br><span class="line">  __int128 v28; &#x2F;&#x2F; [esp+32Ch] [ebp-1Ch]</span><br><span class="line">  int v29; &#x2F;&#x2F; [esp+33Ch] [ebp-Ch]</span><br><span class="line">  __int16 v30; &#x2F;&#x2F; [esp+340h] [ebp-8h]</span><br><span class="line"></span><br><span class="line">  if ( a2 &#x3D;&#x3D; 16 )</span><br><span class="line">  &#123;</span><br><span class="line">    EndDialog(hDlg, 0);</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( a2 &#x3D;&#x3D; 272 )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 &#x3D; GetModuleHandleW(0);</span><br><span class="line">    v6 &#x3D; LoadIconW(v5, (LPCWSTR)0x67);</span><br><span class="line">    SetClassLongA(hDlg, -14, (LONG)v6);</span><br><span class="line">    v7 &#x3D; GetModuleHandleW(0);</span><br><span class="line">    v8 &#x3D; LoadCursorW(v7, (LPCWSTR)0x66);</span><br><span class="line">    v9 &#x3D; GetDlgItem(hDlg, 1);</span><br><span class="line">    SetClassLongA(v9, -12, (LONG)v8);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( a2 !&#x3D; 273 || (unsigned __int16)a3 !&#x3D; 1 )</span><br><span class="line">    return 0;</span><br><span class="line">  memset(&amp;String, (unsigned __int16)a3 - 1, 0x100u);</span><br><span class="line">  memset(v11, 0, 0x100u);</span><br><span class="line">  memset(&amp;Text, 0, 0x100u);</span><br><span class="line">  GetDlgItemTextA(hDlg, 1001, &amp;String, 256);</span><br><span class="line">  GetDlgItemTextA(hDlg, 1002, v11, 256);</span><br><span class="line">  if ( strstr(&amp;String, &quot;@&quot;) &amp;&amp; strstr(&amp;String, &quot;.&quot;) &amp;&amp; strstr(&amp;String, &quot;.&quot;)[1] &amp;&amp; strstr(&amp;String, &quot;@&quot;)[1] !&#x3D; &#39;.&#39; )</span><br><span class="line">  &#123;</span><br><span class="line">    v28 &#x3D; xmmword_410AA0;             &#x2F;&#x2F;Registration fai</span><br><span class="line">    v29 &#x3D; 1701999980; </span><br><span class="line">    *(_OWORD *)Src &#x3D; xmmword_410A90;  &#x2F;&#x2F;Registration Suc</span><br><span class="line">    v30 &#x3D; 46;</span><br><span class="line">    v26 &#x3D; xmmword_410A80;             &#x2F;&#x2F;cess!.Your flag </span><br><span class="line">    v27 &#x3D; 3830633;</span><br><span class="line">    if ( strlen(v11) !&#x3D; 16</span><br><span class="line">      || v11[0] !&#x3D; 67                 &#x2F;&#x2F;v11[0]&#x3D;&#39;C&#39;</span><br><span class="line">      || v23 !&#x3D; 88                    &#x2F;&#x2F;v23&#x3D;&#39;X&#39;</span><br><span class="line">      || v11[1] !&#x3D; 90                 &#x2F;&#x2F;v11[1]&#x3D;&#39;Z&#39;</span><br><span class="line">      || v11[1] + v22 !&#x3D; 155          &#x2F;&#x2F;v22&#x3D;&#39;A&#39;</span><br><span class="line">      || v11[2] !&#x3D; 57                 &#x2F;&#x2F;v11[2]&#x3D;9</span><br><span class="line">      || v11[2] + v21 !&#x3D; 155          &#x2F;&#x2F;v21&#x3D;&#39;b&#39;</span><br><span class="line">      || v11[3] !&#x3D; 100                &#x2F;&#x2F;v11[3]&#x3D;&#39;d&#39;</span><br><span class="line">      || v20 !&#x3D; 55                    &#x2F;&#x2F;v20&#x3D;&#39;7&#39;</span><br><span class="line">      || v12 !&#x3D; 109                   &#x2F;&#x2F;v12&#x3D;&#39;m&#39;</span><br><span class="line">      || v19 !&#x3D; 71                    &#x2F;&#x2F;v19&#x3D;&#39;G&#39;</span><br><span class="line">      || v13 !&#x3D; 113                   &#x2F;&#x2F;v13&#x3D;&#39;q&#39;</span><br><span class="line">      || v13 + v18 !&#x3D; 170             &#x2F;&#x2F;v18&#x3D;&#39;9&#39;</span><br><span class="line">      || v14 !&#x3D; 52                    &#x2F;&#x2F;v14&#x3D;&#39;4&#39;</span><br><span class="line">      || v17 !&#x3D; 103                   &#x2F;&#x2F;v17&#x3D;&#39;g&#39;</span><br><span class="line">      || v15 !&#x3D; 99                    &#x2F;&#x2F;v15&#x3D;&#39;c&#39;</span><br><span class="line">      || v16 !&#x3D; 56 )                  &#x2F;&#x2F;v16&#x3D;&#39;8&#39;</span><br><span class="line">    &#123;</span><br><span class="line">      strcpy_s(&amp;Text, 0x100u, (const char *)&amp;v28);     &#x2F;&#x2F;Text的内容为Registration fai</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">      strcpy_s(&amp;Text, 0x100u, Src);                    &#x2F;&#x2F;Text的内容为Registration Suc</span><br><span class="line">      strcat_s(&amp;Text, 0x100u, v11);                    &#x2F;&#x2F;把内容拼接起来成为Text的内容：Registration Success!.Your flag</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    strcpy_s(&amp;Text, 0x100u, &quot;Your E-mail address in not valid.&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  MessageBoxA(hDlg, &amp;Text, &quot;Registeration&quot;, 0x40u);</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由以下代码可以得知：<br><code>if ( strstr(&amp;String, &quot;@&quot;) &amp;&amp; strstr(&amp;String, &quot;.&quot;) &amp;&amp; strstr(&amp;String, &quot;.&quot;)[1] &amp;&amp; strstr(&amp;String, &quot;@&quot;)[1] != 46 )</code><br>这是在检验输入邮箱的规范性，也即是@和.是不可以连在一起的。</p>
-<p><code>MessageBoxA(hDlg, &amp;Text, &quot;Registeration&quot;, 0x40u)</code></p>
-<blockquote>
-<p>MessageBox( HWND hWnd,  LPCWSTR lpText,  LPCWSTR lpCaption,  UINT uType);</p>
-</blockquote>
-<blockquote>
-<p>参数hWnd窗口句柄,一般用的较少.这例子中也没有涉及窗口就直接写NULL.</p>
-</blockquote>
-<blockquote>
-<p>参数lpText是消息对话框中显示的内容</p>
-</blockquote>
-<blockquote>
-<p>参数lpCaption是对话框的标题</p>
-</blockquote>
-<blockquote>
-<p>参数uType,指定对话框按钮,图标.</p>
-</blockquote>
-<p>内容也就是v11[4]+v12+v13+…v23:<br><code>CZ9dmq4c8g9G7bAX</code></p>
-<p><img src="/2020/09/07/srm-50/flag1.png" alt><br><img src="/2020/09/07/srm-50/flag2.png" alt><br>flag:<br>CZ9dmq4c8g9G7bAX</p>
-
+				
 			
 		  
       <div class="page-reward">
@@ -256,17 +224,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -317,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/09/07/srm-50/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/tags/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -329,25 +286,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2020/09/08/Guess-the-Number/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Guess-the-Number
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/09/03/re1-100/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">re1-100</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -369,7 +307,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#srm-50-wp"><span class="toc-number">1.</span> <span class="toc-text">srm-50 wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01查看文件"><span class="toc-number">1.1.</span> <span class="toc-text">0x01查看文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02分析代码"><span class="toc-number">1.2.</span> <span class="toc-text">0x02分析代码</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -399,33 +337,7 @@
 
 <!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
 
-  <div class="declare">
-    <strong class="author">本文作者：</strong>
-    
-      kitten7
-    
-    <br>
-    <strong class="create-time">发布时间：</strong>
-    2020-09-07
-    <br>
-    <strong class="update-time">最后更新：</strong>
-    2020-09-08
-    <br>
-    <strong class="article-titles">本文标题：</strong>
-    <a href="http://yoursite.com/2020/09/07/srm-50/" title="srm-50" target="_blank">srm-50</a>
-    <br>
-    <strong class="article-url">本文链接：</strong>
-    <a href="http://yoursite.com/2020/09/07/srm-50/" title="srm-50" target="_blank">http://yoursite.com/2020/09/07/srm-50/</a>
-    <br>
-    <strong class="copyright">版权声明：</strong>
-    本作品采用
-    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
-    许可协议进行许可。转载请注明出处！
-    
-      <br>
-      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
-    
-  </div>
+  <div class="declare" hidden="hidden"></div>
 
 <!-- 添加版权声明》 -->
 
@@ -457,7 +369,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
