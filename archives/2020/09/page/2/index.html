@@ -6,29 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>getup | Hexo</title>
+  <title>Archives: 2020/9 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="getup wp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="getup">
-<meta property="og:url" content="http://yoursite.com/2020/07/12/getup/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/archives/2020/09/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="getup wp">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/md5.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/reioc.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/xor.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/xor2.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/dump1.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/ebata.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/dump2.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/12/getup/flag.png">
-<meta property="article:published_time" content="2020-07-12T11:46:37.000Z">
-<meta property="article:modified_time" content="2020-07-19T12:08:21.183Z">
 <meta property="article:author" content="kitten7">
-<meta property="article:tag" content="2020SCTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/12/getup/md5.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -177,260 +163,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-getup" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      getup
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/09/01/re-for-50-plz-50/" class="archive-article-date">
+  	<time datetime="2020-08-31T16:45:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/09/01/re-for-50-plz-50/">re-for-50-plz-50</a>
     </h1>
   
 
-		<!--显示阅读次数-->
-		
-			<br/>
-			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-			<span class="icon-sort"></span>
-			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-					阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-			</span>
-			</a>
-			
-        
-				<a href="/2020/07/12/getup/" class="archive-article-date">
-  	<time datetime="2020-07-12T11:46:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-				
-			</header>
-		  
-		  <div class="article-entry" itemprop="articleBody">
-			
-				<h1 id="getup-wp"><a href="#getup-wp" class="headerlink" title="getup wp"></a>getup wp</h1><a id="more"></a>
-
-<h2 id="1-查看下载文件"><a href="#1-查看下载文件" class="headerlink" title="1. 查看下载文件"></a>1. 查看下载文件</h2><p>用ida打开查看源码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">int sub_402700()</span><br><span class="line">&#123;</span><br><span class="line">  int v0; &#x2F;&#x2F; ST14_4</span><br><span class="line">  HMODULE lpAddress; &#x2F;&#x2F; ST18_4</span><br><span class="line">  DWORD flOldProtect; &#x2F;&#x2F; [esp+Ch] [ebp-14h]</span><br><span class="line">  char Dst; &#x2F;&#x2F; [esp+10h] [ebp-10h]</span><br><span class="line"></span><br><span class="line">  printf(&quot;you should give me a word:&quot;);</span><br><span class="line">  memset(&amp;Dst, 0, 0xAu);</span><br><span class="line">  scanf_s(&quot;%s&quot;, &amp;Dst, 10);</span><br><span class="line">  if ( strlen(&amp;Dst) &gt; 6 || !(unsigned __int8)sub_401DF0(&amp;Dst) )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_401080(std::cout, &quot;try again&quot;);</span><br><span class="line">    exit(0);</span><br><span class="line">  &#125;</span><br><span class="line">  v0 &#x3D; sub_402B00(&quot;.reioc&quot;);</span><br><span class="line">  lpAddress &#x3D; GetModuleHandleW(0) + (*(_DWORD *)(v0 + 12) &gt;&gt; 2);</span><br><span class="line">  VirtualProtect(lpAddress, *(_DWORD *)(v0 + 16), 0x40u, &amp;flOldProtect);</span><br><span class="line">  return sub_402610((int)lpAddress, &amp;Dst);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>源码的意思大致是：输入字符串长度≤6，而且sub_401DF0返回值是1。</p>
-<p>查看sub_401DF0函数源码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">char __cdecl sub_401DF0(char *Str)</span><br><span class="line">&#123;</span><br><span class="line">  char result; &#x2F;&#x2F; al</span><br><span class="line">  size_t Size; &#x2F;&#x2F; [esp+Ch] [ebp-90h]</span><br><span class="line">  signed int i; &#x2F;&#x2F; [esp+14h] [ebp-88h]</span><br><span class="line">  signed int j; &#x2F;&#x2F; [esp+14h] [ebp-88h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [esp+18h] [ebp-84h]</span><br><span class="line">  char Str2; &#x2F;&#x2F; [esp+30h] [ebp-6Ch]</span><br><span class="line">  char Dst; &#x2F;&#x2F; [esp+54h] [ebp-48h]</span><br><span class="line">  char v8[39]; &#x2F;&#x2F; [esp+55h] [ebp-47h]</span><br><span class="line">  unsigned __int8 v9[16]; &#x2F;&#x2F; [esp+7Ch] [ebp-20h]</span><br><span class="line">  int v10; &#x2F;&#x2F; [esp+98h] [ebp-4h]</span><br><span class="line"></span><br><span class="line">  Size &#x3D; strlen(Str);</span><br><span class="line">  for ( i &#x3D; 0; i &lt; 1000000; ++i )</span><br><span class="line">    sub_402C90(Str, Size, (int)v9);</span><br><span class="line">  memset(&amp;Dst, 0, 0x28u);</span><br><span class="line">  sub_4015C0(&quot;0123456789abcdef&quot;);</span><br><span class="line">  v10 &#x3D; 0;</span><br><span class="line">  for ( j &#x3D; 0; j &lt; 16; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    *(&amp;Dst + 2 * j) &#x3D; *(_BYTE *)sub_4019A0((signed int)v9[j] &gt;&gt; 4);</span><br><span class="line">    v8[2 * j] &#x3D; *(_BYTE *)sub_4019A0(v9[j] % 16);</span><br><span class="line">  &#125;</span><br><span class="line">  printf(&quot;\n&quot;);</span><br><span class="line">  strcpy(&amp;Str2, &quot;32c1d123c193aecc4280a5d7925a2504&quot;);</span><br><span class="line">  if ( !strcmp(&amp;Dst, &amp;Str2) )</span><br><span class="line">  &#123;</span><br><span class="line">    v10 &#x3D; -1;</span><br><span class="line">    std::basic_string&lt;char,std::char_traits&lt;char&gt;,std::allocator&lt;char&gt;&gt;::~basic_string&lt;char,std::char_traits&lt;char&gt;,std::allocator&lt;char&gt;&gt;(&amp;v5);</span><br><span class="line">    result &#x3D; 1;</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    v10 &#x3D; -1;</span><br><span class="line">    std::basic_string&lt;char,std::char_traits&lt;char&gt;,std::allocator&lt;char&gt;&gt;::~basic_string&lt;char,std::char_traits&lt;char&gt;,std::allocator&lt;char&gt;&gt;(&amp;v5);</span><br><span class="line">    result &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码意思就是，如果返回1，那么满足加密之后Dst与32c1d123c193aecc4280a5d7925a2504相同，这里实际上是md5加密，得到输入为sycsyc：</p>
-<p><img src="/2020/07/12/getup/md5.png" alt="md5"></p>
-<p>查看刚刚的代码，发现.reioc段很可疑，是不常见的段：<br><img src="/2020/07/12/getup/reioc.png" alt="reioc"></p>
-<p>接下来发现，将.reioc段的内容和输入值sycsyc进行亦或：</p>
-<p><img src="/2020/07/12/getup/xor.png" alt><br><img src="/2020/07/12/getup/xor2.png" alt></p>
-<p>思路就是将.reioc段执行完亦或操作之后的内存dump下来：<br><img src="/2020/07/12/getup/dump1.png" alt><br>注意：由于地址的随机化，我们需要在ollydbg里面找到原来是sub_402610函数的地址，下断点，然后dump下来，保存为dump.exe文件。</p>
-<p>打开dump.exe发现里面又有一个奇怪的段：<br><img src="/2020/07/12/getup/ebata.png" alt></p>
-<p>同理：下断点，dump内存：</p>
-<p><img src="/2020/07/12/getup/dump2.png" alt></p>
-<p>这里一个函数实际就是RC4生成S-BOX，另一个函数就是加密函数，key值为syclover</p>
-<p>最终代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int sub_401A70(int* a1, char* Str) &#123;</span><br><span class="line">    int v5[30] &#x3D; &#123; 0 &#125;, v6 &#x3D; 0, v10 &#x3D; 0, v11 &#x3D; 0;</span><br><span class="line">    int v12[] &#x3D; &#123; 128,85,126,45,209,9,37,171,60,86,149,196,54,19,237,114,36,147,178,200,69,236,22,107,103,29,249,163,150,217 &#125;;</span><br><span class="line"></span><br><span class="line">    for (unsigned int i &#x3D; 0;; ++i) &#123;</span><br><span class="line">        if (i &gt;&#x3D; strlen(Str)) &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        v5[i] &#x3D; Str[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (unsigned int j &#x3D; 0;; ++j) &#123;</span><br><span class="line">        if (j &gt;&#x3D; strlen(Str)) &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        v11 &#x3D; (v11 + 1) % 256;</span><br><span class="line">        v10 &#x3D; (a1[v11] + v10) % 256;</span><br><span class="line">        a1[v11] &#x3D; a1[v10] &amp; ~a1[v11] | a1[v11] &amp; ~a1[v10];</span><br><span class="line">        a1[v10] &#x3D; a1[v10] &amp; ~a1[v11] | a1[v11] &amp; ~a1[v10];</span><br><span class="line">        a1[v11] &#x3D; a1[v10] &amp; ~a1[v11] | a1[v11] &amp; ~a1[v10];</span><br><span class="line">        v6 &#x3D; (a1[v10] + a1[v11]) % 256;</span><br><span class="line">        v5[j] ^&#x3D; a1[v6];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (unsigned int k &#x3D; 0; k &lt; 30; ++k)</span><br><span class="line">        if (v5[k] !&#x3D; v12[k]) &#123;</span><br><span class="line">            return k + 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int sub_404000(char* Str) &#123;</span><br><span class="line">    size_t v1;</span><br><span class="line">    int v3[300] &#x3D; &#123; 0 &#125;, v5 &#x3D; 0, v9[300] &#x3D; &#123; 0 &#125;;</span><br><span class="line">    char Dst[40] &#x3D; &#123; 0 &#125;, v11[9] &#x3D; &quot;syclover&quot;;</span><br><span class="line">    memset(Dst, 0, 0x28u);</span><br><span class="line"></span><br><span class="line">    for (int i &#x3D; 0; i &lt; strlen(Str); ++i)</span><br><span class="line">        Dst[i] &#x3D; Str[i];</span><br><span class="line"></span><br><span class="line">    for (int j &#x3D; 0; j &lt; 256; ++j) &#123;</span><br><span class="line">        v9[j] &#x3D; j;</span><br><span class="line">        v1 &#x3D; strlen(v11);</span><br><span class="line">        v3[j] &#x3D; v11[j % v1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int k &#x3D; 0; k &lt; 256; ++k) &#123;</span><br><span class="line">        v5 &#x3D; (v3[k] + v9[k] + v5) % 256;</span><br><span class="line">        int tmp &#x3D; v9[k];</span><br><span class="line">        v9[k] &#x3D; v9[v5];</span><br><span class="line">        v9[v5] &#x3D; tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    return sub_401A70(v9, Dst);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    char flag[] &#x3D; &quot;SCTF&#123;************************&#125;&quot;;</span><br><span class="line">    for (unsigned int i &#x3D; 5; sub_404000(flag);)</span><br><span class="line">        if (sub_404000(flag) &#x3D;&#x3D; i + 1)</span><br><span class="line">            flag[i]++;</span><br><span class="line">        else</span><br><span class="line">            i++;</span><br><span class="line">    cout &lt;&lt; flag &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    system(&quot;PAUSE&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/12/getup/flag.png" alt><br>flag:SCTF{zzz~(|3[___]_rc4_5o_e4sy}</p>
-
-			
-		  
-      <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-          <div class="tooltip tooltip-east">
-
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020SCTF</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kitten7.github.io/2020/07/12/getup/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/07/13/csaw2013/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          csaw2013
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/07/11/signin/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">signin</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#getup-wp"><span class="toc-number">1.</span> <span class="toc-text">getup wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-查看下载文件"><span class="toc-number">1.1.</span> <span class="toc-text">1. 查看下载文件</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
-
-<!-- 《添加版权声明 -->
-   
-       <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare">
-    <strong class="author">本文作者：</strong>
     
-      kitten7
-    
-    <br>
-    <strong class="create-time">发布时间：</strong>
-    2020-07-12
-    <br>
-    <strong class="update-time">最后更新：</strong>
-    2020-07-19
-    <br>
-    <strong class="article-titles">本文标题：</strong>
-    <a href="http://yoursite.com/2020/07/12/getup/" title="getup" target="_blank">getup</a>
-    <br>
-    <strong class="article-url">本文链接：</strong>
-    <a href="http://yoursite.com/2020/07/12/getup/" title="getup" target="_blank">http://yoursite.com/2020/07/12/getup/</a>
-    <br>
-    <strong class="copyright">版权声明：</strong>
-    本作品采用
-    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
-    许可协议进行许可。转载请注明出处！
-    
-      <br>
-      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
-    
-  </div>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2020/09/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/09/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 
-<!-- 添加版权声明》 -->
-
-   
-<!-- 添加版权声明》 -->
 
           </div>
         </div>
@@ -457,8 +248,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
