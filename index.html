@@ -64,7 +64,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 28
+			总文章数 29
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -164,6 +164,111 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Reversing-Kr-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/14/Reversing-Kr-wp/">Reversing.Kr-wp</a>
+    </h1>
+  
+
+		<!--显示阅读次数-->
+		
+        
+				<a href="/2020/10/14/Reversing-Kr-wp/" class="archive-article-date">
+  	<time datetime="2020-10-14T12:43:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
+</a>
+				
+			</header>
+		  
+		  <div class="article-entry" itemprop="articleBody">
+			
+				<!-- Reversing.Kr-wp -->
+<h1 id="0x01-Easy-Crack"><a href="#0x01-Easy-Crack" class="headerlink" title="0x01 Easy Crack"></a>0x01 Easy Crack</h1><p>拖进ida看一下:<br><img src="/2020/10/14/Reversing-Kr-wp/easycrackme.png" alt><br>查看DialogFunc的代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL __stdcall <span class="title">DialogFunc</span><span class="params">(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  BOOL result; <span class="comment">// eax</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( a2 != <span class="number">273</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( (<span class="keyword">unsigned</span> __int16)a3 == <span class="number">2</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    EndDialog(hDlg, <span class="number">2</span>);</span><br><span class="line">    result = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( (<span class="keyword">unsigned</span> __int16)a3 == <span class="number">1001</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_401080(hDlg);</span><br><span class="line">    result = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    result = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后根据sub函数可以得知flag的值，是将其中的if条件中的语句满足条件的值进行拼接:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">sub_401080</span><span class="params">(HWND hDlg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CHAR <span class="keyword">String</span>; <span class="comment">// [esp+4h] [ebp-64h]</span></span><br><span class="line">  <span class="keyword">char</span> v3; <span class="comment">// [esp+5h] [ebp-63h]</span></span><br><span class="line">  <span class="keyword">char</span> v4; <span class="comment">// [esp+6h] [ebp-62h]</span></span><br><span class="line">  <span class="keyword">char</span> v5; <span class="comment">// [esp+8h] [ebp-60h]</span></span><br><span class="line">  __int16 v6; <span class="comment">// [esp+65h] [ebp-3h]</span></span><br><span class="line">  <span class="keyword">char</span> v7; <span class="comment">// [esp+67h] [ebp-1h]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">String</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(&amp;v3, <span class="number">0</span>, <span class="number">0x60</span>u);</span><br><span class="line">  v6 = <span class="number">0</span>;</span><br><span class="line">  v7 = <span class="number">0</span>;</span><br><span class="line">  GetDlgItemTextA(hDlg, <span class="number">1000</span>, &amp;<span class="keyword">String</span>, <span class="number">100</span>);</span><br><span class="line">  <span class="keyword">if</span> ( v3 != <span class="string">'a'</span> || <span class="built_in">strncmp</span>(&amp;v4, <span class="number">5</span>y, <span class="number">2u</span>) || <span class="built_in">strcmp</span>(&amp;v5, R3versing) || <span class="keyword">String</span> != <span class="string">'E'</span> )</span><br><span class="line">    <span class="keyword">return</span> MessageBoxA(hDlg, aIncorrectPassw, Caption, <span class="number">0x10</span>u);</span><br><span class="line">  MessageBoxA(hDlg, Text, Caption, <span class="number">0x40</span>u);</span><br><span class="line">  <span class="keyword">return</span> EndDialog(hDlg, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="0x02-Easy-Keygen"><a href="#0x02-Easy-Keygen" class="headerlink" title="0x02 Easy Keygen"></a>0x02 Easy Keygen</h1><p>查看源代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> **argv, <span class="keyword">const</span> <span class="keyword">char</span> **envp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> v3; <span class="comment">// ebp</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> i; <span class="comment">// esi</span></span><br><span class="line">  <span class="keyword">char</span> v6; <span class="comment">// [esp+Ch] [ebp-130h]</span></span><br><span class="line">  <span class="keyword">char</span> v7; <span class="comment">// [esp+Dh] [ebp-12Fh]</span></span><br><span class="line">  <span class="keyword">char</span> v8; <span class="comment">// [esp+Eh] [ebp-12Eh]</span></span><br><span class="line">  <span class="keyword">char</span> v9; <span class="comment">// [esp+10h] [ebp-12Ch]</span></span><br><span class="line">  <span class="keyword">char</span> v10; <span class="comment">// [esp+11h] [ebp-12Bh]</span></span><br><span class="line">  __int16 v11; <span class="comment">// [esp+71h] [ebp-CBh]</span></span><br><span class="line">  <span class="keyword">char</span> v12; <span class="comment">// [esp+73h] [ebp-C9h]</span></span><br><span class="line">  <span class="keyword">char</span> v13; <span class="comment">// [esp+74h] [ebp-C8h]</span></span><br><span class="line">  <span class="keyword">char</span> v14; <span class="comment">// [esp+75h] [ebp-C7h]</span></span><br><span class="line">  __int16 v15; <span class="comment">// [esp+139h] [ebp-3h]</span></span><br><span class="line">  <span class="keyword">char</span> v16; <span class="comment">// [esp+13Bh] [ebp-1h]</span></span><br><span class="line"></span><br><span class="line">  v9 = <span class="number">0</span>;</span><br><span class="line">  v13 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(&amp;v10, <span class="number">0</span>, <span class="number">0x60</span>u);</span><br><span class="line">  v11 = <span class="number">0</span>;</span><br><span class="line">  v12 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(&amp;v14, <span class="number">0</span>, <span class="number">0xC4</span>u);</span><br><span class="line">  v15 = <span class="number">0</span>;</span><br><span class="line">  v16 = <span class="number">0</span>;</span><br><span class="line">  v6 = <span class="number">16</span>;</span><br><span class="line">  v7 = <span class="number">32</span>;</span><br><span class="line">  v8 = <span class="number">48</span>;</span><br><span class="line">  sub_4011B9((<span class="keyword">int</span>)aInputName);</span><br><span class="line">  <span class="built_in">scanf</span>(_s, &amp;v9);</span><br><span class="line">  v3 = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; v3 &lt; (<span class="keyword">signed</span> <span class="keyword">int</span>)<span class="built_in">strlen</span>(&amp;v9); ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= <span class="number">3</span> )</span><br><span class="line">      i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">sprintf</span>(&amp;v13, aS02x, &amp;v13, *(&amp;v9 + v3++) ^ *(&amp;v6 + i));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">memset</span>(&amp;v9, <span class="number">0</span>, <span class="number">0x64</span>u);</span><br><span class="line">  sub_4011B9((<span class="keyword">int</span>)aInputSerial);</span><br><span class="line">  <span class="built_in">scanf</span>(_s, &amp;v9);</span><br><span class="line">  <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>(&amp;v9, &amp;v13) )</span><br><span class="line">    sub_4011B9((<span class="keyword">int</span>)aCorrect);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    sub_4011B9((<span class="keyword">int</span>)aWrong);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相应的exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">v6 = [<span class="number">16</span>,<span class="number">32</span>,<span class="number">48</span>]</span><br><span class="line"><span class="comment">#v9 = []</span></span><br><span class="line">v9 = <span class="string">''</span></span><br><span class="line">v13 = [<span class="number">0x5B</span>,<span class="number">0x13</span>,<span class="number">0x49</span>,<span class="number">0x77</span>,<span class="number">0x13</span>,<span class="number">0x5E</span>,<span class="number">0x7D</span>,<span class="number">0x13</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">    <span class="comment">#v9.append(hex(v13[i] ^ v6[i % 3]))</span></span><br><span class="line">    v9 += chr(v13[i] ^ v6[i % <span class="number">3</span>])</span><br><span class="line">print(v9)</span><br></pre></td></tr></table></figure>
+
+<h1 id="0x03-Easy-Unpack"><a href="#0x03-Easy-Unpack" class="headerlink" title="0x03 Easy Unpack"></a>0x03 Easy Unpack</h1><p>算是第一次写脱壳的题目叭，找了好多个大佬的wp联合起来看才调试出来。</p>
+<p>文件拖进exeinfo查看一下：<br><img src="/2020/10/14/Reversing-Kr-wp/easyunpack.png" alt><br>再根据题目名字(Easy Unpack)以及readme的提示，可以猜测出程序加壳。</p>
+<p>拖进OD查看一下：<br><img src="/2020/10/14/Reversing-Kr-wp/unpackod1.png" alt><br>接下来就是寻找OEP(程序入口点)，调试的时候，刚开始调试时遇到call函数可以运用<code>F7</code>跟进看一下。</p>
+<p>之后一直<code>F8</code>单步跟踪，遇到循环时，可以在循环的下一条指令<code>F4</code>跳过这个循环。</p>
+<p>之后遇到好多个循环都可以运用此方法跳过，直至跳过0x0040A1D1~0x0040A1F9的循环时：<br><img src="/2020/10/14/Reversing-Kr-wp/unpackod2.png" alt><br>发现了一个大的跳转<code>jmp 00401150</code>。00401150就是真正的OEP，也就是flag。</p>
+
+			
+		  
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/14/Reversing-Kr-wp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!-- 《添加版权声明 -->
+   
+       <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+
+   
+<!-- 添加版权声明》 -->
+
   
     <article id="post-攻防世界-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1026,98 +1131,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/09/18/parallel-comparator-wp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!-- 《添加版权声明 -->
-   
-       <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-
-   
-<!-- 添加版权声明》 -->
-
-  
-    <article id="post-羊城杯-login-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/13/%E7%BE%8A%E5%9F%8E%E6%9D%AF-login-wp/">羊城杯 login wp</a>
-    </h1>
-  
-
-		<!--显示阅读次数-->
-		
-        
-				<a href="/2020/09/13/%E7%BE%8A%E5%9F%8E%E6%9D%AF-login-wp/" class="archive-article-date">
-  	<time datetime="2020-09-13T13:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
-</a>
-				
-			</header>
-		  
-		  <div class="article-entry" itemprop="articleBody">
-			
-				<h1 id="羊城杯-login-wp"><a href="#羊城杯-login-wp" class="headerlink" title="羊城杯 login wp"></a>羊城杯 login wp</h1>
-				
-					<a class="article-more-a" href="/2020/09/13/%E7%BE%8A%E5%9F%8E%E6%9D%AF-login-wp/#more">more >></a>
-				
-			
-		  
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Reverse,Pyinstaller</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/13/%E7%BE%8A%E5%9F%8E%E6%9D%AF-login-wp/">展开全文 >></a>
         </p>
       
 
