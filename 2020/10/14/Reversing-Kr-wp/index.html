@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Reversing.Kr-wp | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Reversing.Kr wp 0x01 Easy Crack拖进ida看一下:查看DialogFunc的代码: 12345678910111213141516171819202122BOOL __stdcall DialogFunc(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)&amp;#123;  BOOL result; &#x2F;&#x2F; eax  if ( a2 !&#x3D; 2">
+  <meta name="description" content="Reversing.Kr wp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reversing.Kr-wp">
 <meta property="og:url" content="http://yoursite.com/2020/10/14/Reversing-Kr-wp/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Reversing.Kr wp 0x01 Easy Crack拖进ida看一下:查看DialogFunc的代码: 12345678910111213141516171819202122BOOL __stdcall DialogFunc(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)&amp;#123;  BOOL result; &#x2F;&#x2F; eax  if ( a2 !&#x3D; 2">
+<meta property="og:description" content="Reversing.Kr wp">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/10/14/Reversing-Kr-wp/easycrackme.png">
 <meta property="og:image" content="http://yoursite.com/2020/10/14/Reversing-Kr-wp/easyunpack.png">
 <meta property="og:image" content="http://yoursite.com/2020/10/14/Reversing-Kr-wp/unpackod1.png">
 <meta property="og:image" content="http://yoursite.com/2020/10/14/Reversing-Kr-wp/unpackod2.png">
 <meta property="article:published_time" content="2020-10-14T12:43:03.000Z">
-<meta property="article:modified_time" content="2020-10-17T04:57:58.284Z">
+<meta property="article:modified_time" content="2020-10-17T05:04:24.965Z">
 <meta property="article:author" content="kitten7">
 <meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
 		  
 		  <div class="article-entry" itemprop="articleBody">
 			
-				<h1 id="Reversing-Kr-wp"><a href="#Reversing-Kr-wp" class="headerlink" title="Reversing.Kr wp"></a>Reversing.Kr wp</h1><!-- Reversing.Kr-wp -->
+				<h1 id="Reversing-Kr-wp"><a href="#Reversing-Kr-wp" class="headerlink" title="Reversing.Kr wp"></a>Reversing.Kr wp</h1><a id="more"></a>
 <h2 id="0x01-Easy-Crack"><a href="#0x01-Easy-Crack" class="headerlink" title="0x01 Easy Crack"></a>0x01 Easy Crack</h2><p>拖进ida看一下:<br><img src="/2020/10/14/Reversing-Kr-wp/easycrackme.png" alt><br>查看DialogFunc的代码:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL __stdcall <span class="title">DialogFunc</span><span class="params">(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  BOOL result; <span class="comment">// eax</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( a2 != <span class="number">273</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( (<span class="keyword">unsigned</span> __int16)a3 == <span class="number">2</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    EndDialog(hDlg, <span class="number">2</span>);</span><br><span class="line">    result = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( (<span class="keyword">unsigned</span> __int16)a3 == <span class="number">1001</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_401080(hDlg);</span><br><span class="line">    result = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    result = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后根据sub函数可以得知flag的值，是将其中的if条件中的语句满足条件的值进行拼接:</p>
@@ -264,6 +264,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/reverse//" class="article-tag-list-link color3">reverse</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
